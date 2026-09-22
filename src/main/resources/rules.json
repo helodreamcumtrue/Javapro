@@ -1,0 +1,237 @@
+{
+  "topicRules": [
+    {
+      "keywords": ["web development", "web dev", "website development"],
+      "tasks": [
+        { "description": "Learn HTML", "priority": "HIGH", "estimatedDays": 4 },
+        { "description": "Learn CSS", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Learn JavaScript", "priority": "HIGH", "estimatedDays": 10 },
+        {
+          "description": "Build Projects",
+          "priority": "MEDIUM",
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Build a static portfolio website", "priority": "MEDIUM", "estimatedDays": 5 },
+            { "description": "Build a to-do list web app", "priority": "MEDIUM", "estimatedDays": 5 },
+            { "description": "Build a responsive landing page", "priority": "LOW", "estimatedDays": 4 }
+          ]
+        },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+      ]
+    },
+    {
+      "keywords": ["python"],
+      "tasks": [
+        { "description": "Learn Python syntax and basics", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Learn data structures (lists, dicts, sets, tuples)", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Learn functions and OOP in Python", "priority": "HIGH", "estimatedDays": 6 },
+        { "description": "Learn Python libraries (NumPy/Pandas basics)", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Build small Python projects", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+      ]
+    },
+    {
+      "keywords": ["java programming", "java language", "learn java"],
+      "tasks": [
+        { "description": "Learn Java syntax and basics", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Learn OOP concepts in Java", "priority": "HIGH", "estimatedDays": 6 },
+        { "description": "Learn Collections framework", "priority": "MEDIUM", "estimatedDays": 5 },
+        { "description": "Learn Exception Handling and File I/O", "priority": "MEDIUM", "estimatedDays": 4 },
+        { "description": "Build small Java projects", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+      ]
+    },
+    {
+      "keywords": ["data science"],
+      "tasks": [
+        { "description": "Learn Python for Data Science", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn Statistics and Probability basics", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn Pandas and NumPy", "priority": "HIGH", "estimatedDays": 6 },
+        { "description": "Learn Data Visualization (Matplotlib/Seaborn)", "priority": "MEDIUM", "estimatedDays": 5 },
+        { "description": "Learn basic Machine Learning concepts", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Work on a Data Science mini project", "priority": "MEDIUM", "estimatedDays": 8 },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+      ]
+    },
+    {
+      "keywords": ["machine learning", "ml"],
+      "tasks": [
+        { "description": "Revise Python and Math foundations (linear algebra, calculus, probability)", "priority": "HIGH", "estimatedDays": 10 },
+        { "description": "Learn core ML algorithms (regression, classification, clustering)", "priority": "HIGH", "estimatedDays": 14 },
+        { "description": "Learn a ML library (scikit-learn)", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn model evaluation and tuning", "priority": "MEDIUM", "estimatedDays": 5 },
+        { "description": "Build an end-to-end ML mini project", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 4 }
+      ]
+    },
+    {
+      "keywords": ["app development", "android app", "mobile app"],
+      "tasks": [
+        { "description": "Learn Kotlin/Java basics for Android", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn Android Studio and UI layouts (XML/Compose)", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn Activities, Fragments and Navigation", "priority": "MEDIUM", "estimatedDays": 6 },
+        { "description": "Learn local storage and APIs", "priority": "MEDIUM", "estimatedDays": 6 },
+        { "description": "Build a simple Android app", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+      ]
+    },
+    {
+      "keywords": ["guitar"],
+      "tasks": [
+        { "description": "Learn guitar parts and basic posture", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Learn basic open chords", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Practice chord transitions and strumming patterns", "priority": "HIGH", "estimatedDays": 10 },
+        { "description": "Learn to play simple songs", "priority": "MEDIUM", "estimatedDays": 14 },
+        { "description": "Learn basic music theory (scales)", "priority": "LOW", "estimatedDays": 7 },
+        { "description": "Practice regularly and refine technique", "priority": "LOW", "estimatedDays": 14 }
+      ]
+    },
+    {
+      "keywords": ["fitness", "gym", "workout"],
+      "tasks": [
+        { "description": "Set a clear fitness goal and baseline measurements", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Learn correct form for basic exercises", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Build a weekly workout schedule", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Plan a balanced diet/nutrition routine", "priority": "MEDIUM", "estimatedDays": 3 },
+        { "description": "Track progress and adjust routine", "priority": "MEDIUM", "estimatedDays": 21 },
+        { "description": "Add variety (cardio, strength, flexibility)", "priority": "LOW", "estimatedDays": 14 }
+      ]
+    },
+    {
+      "keywords": ["cooking", "cook"],
+      "tasks": [
+        { "description": "Learn kitchen basics and knife skills", "priority": "HIGH", "estimatedDays": 3 },
+        { "description": "Learn basic cooking techniques (boiling, frying, baking)", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn to follow and adapt recipes", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Practice cooking simple daily meals", "priority": "MEDIUM", "estimatedDays": 14 },
+        { "description": "Try advanced/cuisine-specific recipes", "priority": "LOW", "estimatedDays": 14 }
+      ]
+    },
+    {
+      "keywords": ["public speaking", "communication skills"],
+      "tasks": [
+        { "description": "Identify fear points and build confidence basics", "priority": "HIGH", "estimatedDays": 3 },
+        { "description": "Learn structuring a speech (intro-body-conclusion)", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Practice voice modulation and body language", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Practice speaking in front of small groups", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Record and review your own speeches", "priority": "LOW", "estimatedDays": 7 }
+      ]
+    },
+    {
+      "keywords": ["digital marketing"],
+      "tasks": [
+        { "description": "Learn digital marketing fundamentals", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Learn SEO basics", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn social media marketing", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Learn content marketing and copywriting", "priority": "MEDIUM", "estimatedDays": 6 },
+        { "description": "Run a small sample campaign", "priority": "LOW", "estimatedDays": 10 }
+      ]
+    },
+    {
+      "keywords": ["exam", "test preparation", "entrance exam"],
+      "tasks": [
+        { "description": "Understand the exam syllabus and pattern", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Collect study material and resources", "priority": "HIGH", "estimatedDays": 3 },
+        { "description": "Study core topics section-wise", "priority": "HIGH", "estimatedDays": 21 },
+        { "description": "Practice previous year papers", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Take timed mock tests", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Revise weak areas", "priority": "LOW", "estimatedDays": 5 }
+      ]
+    },
+    {
+      "keywords": ["startup", "business", "launch a company"],
+      "tasks": [
+        { "description": "Validate the business idea and target market", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Create a business plan", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Build a Minimum Viable Product (MVP)", "priority": "HIGH", "estimatedDays": 21 },
+        { "description": "Test MVP with early users and gather feedback", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Plan funding/finances", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Launch and market the product", "priority": "LOW", "estimatedDays": 14 }
+      ]
+    },
+    {
+      "keywords": ["book", "write a novel", "writing a book"],
+      "tasks": [
+        { "description": "Brainstorm and finalize the core idea/plot", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Create an outline and chapter structure", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Write the first draft", "priority": "HIGH", "estimatedDays": 30 },
+        { "description": "Edit and revise the manuscript", "priority": "MEDIUM", "estimatedDays": 14 },
+        { "description": "Get feedback from readers/editors", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Finalize and publish/submit", "priority": "LOW", "estimatedDays": 7 }
+      ]
+    },
+    {
+      "keywords": ["language", "spanish", "french", "german", "japanese", "new language"],
+      "tasks": [
+        { "description": "Learn the alphabet/script and pronunciation", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Learn basic vocabulary and greetings", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Learn basic grammar rules", "priority": "HIGH", "estimatedDays": 10 },
+        { "description": "Practice listening and speaking daily", "priority": "MEDIUM", "estimatedDays": 21 },
+        { "description": "Practice conversations with native speakers", "priority": "MEDIUM", "estimatedDays": 14 },
+        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 5 }
+      ]
+    }
+  ],
+
+  "verbTemplates": [
+    {
+      "keywords": ["learn", "master", "study"],
+      "tasks": [
+        { "description": "Understand the basics of {topic}", "priority": "HIGH", "estimatedDays": 4 },
+        { "description": "Study core concepts of {topic}", "priority": "HIGH", "estimatedDays": 7 },
+        { "description": "Practice {topic} through exercises", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Build a small project using {topic}", "priority": "MEDIUM", "estimatedDays": 10 },
+        { "description": "Revise and test your knowledge of {topic}", "priority": "LOW", "estimatedDays": 3 }
+      ]
+    },
+    {
+      "keywords": ["build", "create", "develop", "make"],
+      "tasks": [
+        { "description": "Plan and design {topic}", "priority": "HIGH", "estimatedDays": 3 },
+        { "description": "Set up tools/environment for {topic}", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Implement core features of {topic}", "priority": "HIGH", "estimatedDays": 10 },
+        { "description": "Test {topic} thoroughly", "priority": "MEDIUM", "estimatedDays": 4 },
+        { "description": "Deploy / finalize {topic}", "priority": "LOW", "estimatedDays": 2 }
+      ]
+    },
+    {
+      "keywords": ["prepare", "crack", "clear"],
+      "tasks": [
+        { "description": "Understand the syllabus/requirements for {topic}", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Collect study/reference material for {topic}", "priority": "HIGH", "estimatedDays": 3 },
+        { "description": "Study core topics of {topic}", "priority": "HIGH", "estimatedDays": 14 },
+        { "description": "Practice mock tests/simulations for {topic}", "priority": "MEDIUM", "estimatedDays": 7 },
+        { "description": "Revise weak areas of {topic}", "priority": "LOW", "estimatedDays": 5 }
+      ]
+    },
+    {
+      "keywords": ["improve", "get better at", "enhance"],
+      "tasks": [
+        { "description": "Assess current skill level in {topic}", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Identify weak areas in {topic}", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Practice {topic} consistently", "priority": "MEDIUM", "estimatedDays": 14 },
+        { "description": "Get feedback on {topic} from others", "priority": "MEDIUM", "estimatedDays": 5 },
+        { "description": "Track improvement in {topic} over time", "priority": "LOW", "estimatedDays": 7 }
+      ]
+    },
+    {
+      "keywords": ["start", "begin"],
+      "tasks": [
+        { "description": "Research fundamentals of {topic}", "priority": "HIGH", "estimatedDays": 3 },
+        { "description": "Set clear short-term goals for {topic}", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Gather resources/tools needed for {topic}", "priority": "MEDIUM", "estimatedDays": 2 },
+        { "description": "Take the first practical step in {topic}", "priority": "MEDIUM", "estimatedDays": 5 },
+        { "description": "Build a consistent routine for {topic}", "priority": "LOW", "estimatedDays": 7 }
+      ]
+    }
+  ],
+
+  "defaultTemplate": [
+    { "description": "Research and gather information about {goal}", "priority": "HIGH", "estimatedDays": 3 },
+    { "description": "Set clear, measurable milestones for {goal}", "priority": "HIGH", "estimatedDays": 2 },
+    { "description": "Break {goal} into weekly action items", "priority": "MEDIUM", "estimatedDays": 3 },
+    { "description": "Work consistently towards {goal}", "priority": "MEDIUM", "estimatedDays": 14 },
+    { "description": "Track progress and adjust the plan for {goal}", "priority": "LOW", "estimatedDays": 5 },
+    { "description": "Review and refine the outcome of {goal}", "priority": "LOW", "estimatedDays": 3 }
+  ]
+}

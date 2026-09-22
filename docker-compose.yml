@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  goal-decomposition-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: goal-decomposition-engine
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DB_PATH=/app/data/goal_decomposition.db
+    volumes:
+      # Persists SQLite database across restarts
+      - gde_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  gde_data:
+    driver: local

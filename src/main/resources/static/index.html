@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goal Decomposition Engine | Rule-Based Task Hierarchy</title>
+  <meta name="description" content="A 100% free, local, rule-based Goal Decomposition Engine built with Spring Boot and SQLite." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ================= App Navigation / Top Bar ================= -->
+  <header class="top-nav">
+    <div class="nav-content">
+      <div class="brand">
+        <div class="brand-logo">🎯</div>
+        <div class="brand-text">
+          <h1>Goal Decomposition Engine</h1>
+          <span class="engine-badge">Rule-Based • No External AI • 100% Free & Local</span>
+        </div>
+      </div>
+      <div class="system-status">
+        <span class="status-indicator online"></span>
+        <span class="status-text">Engine Online (SQLite Connected)</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-wrapper">
+    <!-- Quick Specs Bar -->
+    <div class="specs-bar">
+      <div class="spec-item">
+        <span class="spec-label">Core Logic</span>
+        <span class="spec-val">Keyword Rules + Verb Heuristics</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Latency</span>
+        <span class="spec-val highlight">&lt; 2ms (Deterministic)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Storage</span>
+        <span class="spec-val">Local SQLite (Zero Cloud)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">API Cost</span>
+        <span class="spec-val free">$0.00 / Free Forever</span>
+      </div>
+    </div>
+
+    <!-- Main Grid Layout -->
+    <div class="dashboard-grid">
+
+      <!-- Column 1: Input Studio + History -->
+      <aside class="sidebar-col">
+        <!-- Goal Input Card -->
+        <div class="card input-card">
+          <div class="card-header">
+            <h2>Decompose a New Goal</h2>
+            <p class="card-subtitle">Input any target to generate a structured task tree</p>
+          </div>
+          <form id="goalForm" class="goal-form">
+            <div class="form-group">
+              <label for="goalTitle">Your Goal Statement</label>
+              <div class="input-with-icon">
+                <span class="input-icon">🎯</span>
+                <input 
+                  type="text" 
+                  id="goalTitle" 
+                  name="goalTitle" 
+                  placeholder='e.g., "Learn Web Development" or "Build a Drone"' 
+                  autocomplete="off"
+                  required 
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Difficulty / Scope Level</label>
+              <div class="difficulty-picker" id="difficultyPicker">
+                <label class="diff-option">
+                  <input type="radio" name="difficulty" value="easy" />
+                  <span class="diff-btn">
+                    <strong>Easy</strong>
+                    <small>0.7x scale</small>
+                  </span>
+                </label>
+                <label class="diff-option">
+                  <input type="radio" name="difficulty" value="medium" checked />
+                  <span class="diff-btn active">
+                    <strong>Medium</strong>
+                    <small>Standard</small>
+                  </span>
+                </label>
+                <label class="diff-option">
+                  <input type="radio" name="difficulty" value="hard" />
+                  <span class="diff-btn">
+                    <strong>Hard</strong>
+                    <small>1.5x + Deep-dive</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" id="decomposeBtn" class="btn btn-primary btn-block">
+              <span class="btn-text">Decompose Goal</span>
+              <span class="btn-spinner hidden"></span>
+            </button>
+          </form>
+
+          <div id="errorBox" class="error-toast hidden"></div>
+
+          <!-- Quick presets -->
+          <div class="presets-section">
+            <span class="presets-title">Quick Demos & Topic Presets:</span>
+            <div class="chips-grid">
+              <button type="button" class="preset-chip" data-goal="Learn Web Development" data-diff="medium">💻 Learn Web Development</button>
+              <button type="button" class="preset-chip" data-goal="Build a Mobile App" data-diff="hard">📱 Build a Mobile App</button>
+              <button type="button" class="preset-chip" data-goal="Learn Python" data-diff="medium">🐍 Learn Python</button>
+              <button type="button" class="preset-chip" data-goal="Prepare for Exam" data-diff="medium">📚 Prepare for Exam</button>
+              <button type="button" class="preset-chip" data-goal="Start a Startup" data-diff="hard">🚀 Start a Startup</button>
+              <button type="button" class="preset-chip" data-goal="Learn Guitar" data-diff="easy">🎸 Learn Guitar</button>
+              <button type="button" class="preset-chip" data-goal="Build an Autonomous Drone" data-diff="medium">🤖 Build an Autonomous Drone</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Previous Goals History Card -->
+        <div class="card history-card">
+          <div class="card-header flex-between">
+            <div>
+              <h2>Goal History</h2>
+              <p class="card-subtitle">Stored in local SQLite</p>
+            </div>
+            <span id="historyCount" class="counter-badge">0</span>
+          </div>
+
+          <div class="search-wrap">
+            <input type="text" id="historySearch" placeholder="Search past goals..." />
+          </div>
+
+          <div class="history-list-wrap">
+            <ul id="goalHistory" class="goal-history-list">
+              <li class="empty-state">No goals decomposed yet. Submit your first goal above!</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Column 2: Decomposed Plan Output Panel -->
+      <section class="main-content-col">
+        <!-- Empty Placeholder State -->
+        <div id="emptyPlanState" class="card empty-plan-card">
+          <div class="empty-illustration">⚡</div>
+          <h3>Ready for Goal Decomposition</h3>
+          <p>Type a goal on the left or select a preset to watch the rule engine parse keywords, evaluate dependencies, and construct an actionable tree hierarchy.</p>
+          <div class="feature-bullets">
+            <div class="bullet-card">
+              <span class="bullet-icon">🌳</span>
+              <h4>Parent-Child Trees</h4>
+              <p>Supports nested subtasks and structured phases.</p>
+            </div>
+            <div class="bullet-card">
+              <span class="bullet-icon">⛓️</span>
+              <h4>Dependency Chaining</h4>
+              <p>Tracks which steps must be completed before others.</p>
+            </div>
+            <div class="bullet-card">
+              <span class="bullet-icon">⚖️</span>
+              <h4>Deterministic Scoring</h4>
+              <p>Priority weighting combined with topological ordering.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Plan Panel (Hidden Initially) -->
+        <div id="resultPanel" class="card result-card hidden">
+          <!-- Plan Header -->
+          <div class="plan-header">
+            <div class="plan-title-box">
+              <span class="plan-kicker">Generated Execution Plan</span>
+              <h2 id="resultTitle" class="plan-title">Plan Name</h2>
+              <div class="plan-badges">
+                <span id="resultDifficulty" class="badge badge-diff">Medium</span>
+                <span id="resultTimeline" class="badge badge-timeline">~36 days</span>
+                <span id="resultTaskStats" class="badge badge-stats">8 tasks</span>
+              </div>
+            </div>
+            <div class="plan-actions">
+              <button id="exportMdBtn" class="btn btn-secondary btn-sm" title="Download Markdown Checklist">
+                <span>📋 Export Markdown</span>
+              </button>
+              <button id="exportJsonBtn" class="btn btn-secondary btn-sm" title="Download JSON Tree">
+                <span>JSON</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Rule Engine Inspector Box -->
+          <div class="inspector-card">
+            <div class="inspector-header">
+              <span class="inspector-title">
+                <span class="pulse-dot"></span> Rule Engine Execution Trace
+              </span>
+              <span id="ruleMatchType" class="strategy-badge">TOPIC_MATCH</span>
+            </div>
+            <div class="inspector-body">
+              <div class="inspector-row">
+                <span class="ins-label">Match Strategy:</span>
+                <span id="ruleExplanation" class="ins-val">Direct topic rule matched: Web Development</span>
+              </div>
+              <div class="inspector-row">
+                <span class="ins-label">Matched Keyword:</span>
+                <code id="ruleKeyword" class="ins-code">web development</code>
+              </div>
+              <div class="inspector-row">
+                <span class="ins-label">Execution Logic:</span>
+                <span class="ins-val text-muted">Zero-API deterministic heuristic • Multiplier applied • Topological sequential dependencies wired</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Progress Tracker -->
+          <div class="progress-section">
+            <div class="progress-info">
+              <span class="progress-label">Task Completion Progress</span>
+              <span id="progressPercent" class="progress-val">0% (0 / 0 completed)</span>
+            </div>
+            <div class="progress-track">
+              <div id="progressBar" class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- Tree Toolbar -->
+          <div class="tree-toolbar">
+            <div class="filter-tabs">
+              <button class="filter-tab active" data-filter="all">All Tasks</button>
+              <button class="filter-tab" data-filter="pending">Pending</button>
+              <button class="filter-tab" data-filter="completed">Completed</button>
+            </div>
+            <div class="tree-controls">
+              <button id="expandAllBtn" class="btn-text-action">Expand All</button>
+              <span class="divider">|</span>
+              <button id="collapseAllBtn" class="btn-text-action">Collapse All</button>
+            </div>
+          </div>
+
+          <!-- Task Tree Hierarchy Container -->
+          <div class="tree-container">
+            <ul id="taskTree" class="task-tree-root"></ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p><strong>Goal Decomposition Engine</strong> • Spring Boot 3 + SQLite + Vanilla Web • Designed for College & Production Demonstration</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

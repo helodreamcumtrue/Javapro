@@ -1,0 +1,9 @@
+target/
+.git/
+.gitignore
+.vscode/
+*.db
+*.bat
+*.cmd
+.idea/
+*.log
