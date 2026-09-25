@@ -1,6 +1,34 @@
 {
   "topicRules": [
     {
+      "keywords": ["ai study planner", "study planner", "study plan"],
+      "tasks": [
+        { "description": "Define core learning roadmap & milestone criteria", "priority": "HIGH", "estimatedDays": 3 },
+        { 
+          "description": "Develop AI recommendation pipeline & prompt engine", 
+          "priority": "HIGH", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Build LLM study schedule generation prompts", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Configure deterministic fallback heuristics", "priority": "MEDIUM", "estimatedDays": 2 },
+            { "description": "Evaluate response latency & memory usage", "priority": "LOW", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Implement collaborative builder dashboard & UX", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 8,
+          "subtasks": [
+            { "description": "UX research & wireframe milestone tracker", "priority": "MEDIUM", "estimatedDays": 3 },
+            { "description": "Integrate real-time builder collaboration signals", "priority": "MEDIUM", "estimatedDays": 3 },
+            { "description": "Design interactive study calendar & task checklist", "priority": "LOW", "estimatedDays": 2 }
+          ]
+        },
+        { "description": "ML integration for adaptive progress calibration", "priority": "MEDIUM", "estimatedDays": 5 },
+        { "description": "Deploy MVP and collect student feedback", "priority": "LOW", "estimatedDays": 4 }
+      ]
+    },
+    {
       "keywords": ["web development", "web dev", "website development"],
       "tasks": [
         { "description": "Learn HTML", "priority": "HIGH", "estimatedDays": 4 },

@@ -1,5 +1,5 @@
 // ===================================================================
-// Goal Decomposition Engine - Production Client Logic
+// Project Graveyard • Goal Decomposition Engine Client Logic
 // Pure Vanilla JavaScript (ES6+) • Zero External Frameworks
 // ===================================================================
 
@@ -41,11 +41,180 @@ const collapseAllBtn = document.getElementById('collapseAllBtn');
 const exportMdBtn = document.getElementById('exportMdBtn');
 const exportJsonBtn = document.getElementById('exportJsonBtn');
 
+// Hero & Navigation Interactive DOM Elements
+const demoSignalCard = document.getElementById('demoSignalCard');
+const heroBrowseBtn = document.getElementById('heroBrowseBtn');
+const heroSubmitBtn = document.getElementById('heroSubmitBtn');
+const topSubmitBtn = document.getElementById('topSubmitBtn');
+const soundToggleBtn = document.getElementById('soundToggleBtn');
+
+// ===================================================================
+// Web Audio Synthesizer (BGM / Ambient Sound & Interaction Audio FX)
+// ===================================================================
+let audioCtx = null;
+let soundEnabled = localStorage.getItem('sound_fx_enabled') === 'true';
+
+function initAudio() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+      audioCtx = new AudioContext();
+    }
+  }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+function playSound(type) {
+  if (!soundEnabled) return;
+  try {
+    initAudio();
+    if (!audioCtx) return;
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'click') {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(620, now);
+      osc.frequency.exponentialRampToValueAtTime(240, now + 0.05);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } else if (type === 'check') {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(880, now);
+      osc.frequency.exponentialRampToValueAtTime(1320, now + 0.09);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } else if (type === 'decompose') {
+      // Futuristic 3-note ascending chord chime
+      const notes = [440, 554.37, 659.25, 880];
+      notes.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const noteStart = now + idx * 0.06;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, noteStart);
+        gain.gain.setValueAtTime(0.09, noteStart);
+        gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(noteStart);
+        osc.stop(noteStart + 0.36);
+      });
+    } else if (type === 'chime') {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.exponentialRampToValueAtTime(1046.5, now + 0.18);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.22);
+    }
+  } catch (err) {
+    // Audio context may be restricted before user gesture
+  }
+}
+
+// Update Audio Toggle Button State
+function updateSoundButton() {
+  if (!soundToggleBtn) return;
+  if (soundEnabled) {
+    soundToggleBtn.classList.add('active');
+    soundToggleBtn.querySelector('.sound-icon').textContent = '🔊';
+    soundToggleBtn.querySelector('.sound-text').textContent = 'Sound ON';
+  } else {
+    soundToggleBtn.classList.remove('active');
+    soundToggleBtn.querySelector('.sound-icon').textContent = '🔇';
+    soundToggleBtn.querySelector('.sound-text').textContent = 'Sound OFF';
+  }
+}
+
+if (soundToggleBtn) {
+  updateSoundButton();
+  soundToggleBtn.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    localStorage.setItem('sound_fx_enabled', soundEnabled);
+    updateSoundButton();
+    if (soundEnabled) {
+      playSound('decompose');
+    }
+  });
+}
+
+// ===================================================================
+// Hero Interactivity (Reference Card & Buttons)
+// ===================================================================
+
+// Clicking Demo Signal Card decomposes "AI Study Planner"
+if (demoSignalCard) {
+  demoSignalCard.addEventListener('click', () => {
+    playSound('chime');
+    goalTitleInput.value = 'AI Study Planner';
+    const radio = document.querySelector('input[name="difficulty"][value="medium"]');
+    if (radio) {
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change'));
+    }
+    goalForm.dispatchEvent(new Event('submit'));
+  });
+
+  demoSignalCard.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      demoSignalCard.click();
+    }
+  });
+}
+
+// Jump to Decomposer from hero action buttons
+function scrollToInputStudio() {
+  playSound('click');
+  const inputCard = document.querySelector('.input-card');
+  if (inputCard) {
+    inputCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => {
+      goalTitleInput.focus();
+    }, 450);
+  }
+}
+
+if (heroSubmitBtn) heroSubmitBtn.addEventListener('click', scrollToInputStudio);
+if (topSubmitBtn) topSubmitBtn.addEventListener('click', scrollToInputStudio);
+
+if (heroBrowseBtn) {
+  heroBrowseBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    playSound('click');
+    const target = document.getElementById('decomposerSection');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
 // ===================================================================
 // Difficulty Radio Selection Sync
 // ===================================================================
 document.querySelectorAll('input[name="difficulty"]').forEach(radio => {
   radio.addEventListener('change', () => {
+    playSound('click');
     document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
     const parentLabel = radio.closest('.diff-option');
     if (parentLabel) {
@@ -60,6 +229,7 @@ document.querySelectorAll('input[name="difficulty"]').forEach(radio => {
 // ===================================================================
 document.querySelectorAll('.preset-chip').forEach(chip => {
   chip.addEventListener('click', () => {
+    playSound('click');
     const goal = chip.dataset.goal;
     const diff = chip.dataset.diff || 'medium';
     
@@ -81,6 +251,7 @@ document.querySelectorAll('.preset-chip').forEach(chip => {
 goalForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   hideError();
+  playSound('click');
 
   const title = goalTitleInput.value.trim();
   const diffRadio = document.querySelector('input[name="difficulty"]:checked');
@@ -109,6 +280,7 @@ goalForm.addEventListener('submit', async (e) => {
 
     currentGoalData = data;
     renderPlan(data);
+    playSound('decompose');
     await loadHistory();
     highlightActiveHistory(data.goalId);
 
@@ -136,17 +308,20 @@ function renderPlan(goalResponse) {
   ruleExplanation.textContent = goalResponse.explanation || 'Rule matching applied.';
   ruleKeyword.textContent = goalResponse.matchedKeyword || 'none';
 
-  // Strategy pill coloring
+  // Strategy pill coloring (Neon Lime / Cyan / Amber)
   ruleMatchType.className = 'strategy-badge';
   if (goalResponse.matchType === 'TOPIC') {
-    ruleMatchType.style.color = '#34d399';
-    ruleMatchType.style.borderColor = 'rgba(52, 211, 153, 0.4)';
+    ruleMatchType.style.color = '#c3fa3b';
+    ruleMatchType.style.borderColor = 'rgba(195, 250, 59, 0.4)';
+    ruleMatchType.style.backgroundColor = 'rgba(195, 250, 59, 0.08)';
   } else if (goalResponse.matchType === 'VERB') {
-    ruleMatchType.style.color = '#60a5fa';
-    ruleMatchType.style.borderColor = 'rgba(96, 165, 250, 0.4)';
+    ruleMatchType.style.color = '#38bdf8';
+    ruleMatchType.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+    ruleMatchType.style.backgroundColor = 'rgba(56, 189, 248, 0.08)';
   } else {
     ruleMatchType.style.color = '#fbbf24';
     ruleMatchType.style.borderColor = 'rgba(251, 191, 36, 0.4)';
+    ruleMatchType.style.backgroundColor = 'rgba(251, 191, 36, 0.08)';
   }
 
   renderTaskTree();
@@ -191,7 +366,7 @@ function createTaskElement(task, indexStr) {
   const left = document.createElement('div');
   left.className = 'task-left';
 
-  // Checkbox
+  // Custom Checkbox
   const cbWrap = document.createElement('label');
   cbWrap.className = 'task-checkbox-wrap';
   const cb = document.createElement('input');
@@ -200,6 +375,7 @@ function createTaskElement(task, indexStr) {
   cb.checked = isCompleted;
   cb.addEventListener('change', async (e) => {
     e.stopPropagation();
+    playSound('check');
     await toggleTaskStatus(task.id, cb, row);
   });
   cbWrap.appendChild(cb);
@@ -278,6 +454,7 @@ function createTaskElement(task, indexStr) {
     if (toggleBtn) {
       toggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        playSound('click');
         const arrow = toggleBtn.querySelector('.toggle-arrow');
         subUl.classList.toggle('hidden');
         arrow.classList.toggle('open');
@@ -374,6 +551,7 @@ function flattenTasks(tasks) {
 // ===================================================================
 document.querySelectorAll('.filter-tab').forEach(tab => {
   tab.addEventListener('click', () => {
+    playSound('click');
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     currentFilter = tab.dataset.filter;
@@ -383,11 +561,13 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
 
 // Expand / Collapse All
 expandAllBtn.addEventListener('click', () => {
+  playSound('click');
   document.querySelectorAll('.task-sub-tree').forEach(tree => tree.classList.remove('hidden'));
   document.querySelectorAll('.toggle-arrow').forEach(a => a.classList.add('open'));
 });
 
 collapseAllBtn.addEventListener('click', () => {
+  playSound('click');
   document.querySelectorAll('.task-sub-tree').forEach(tree => tree.classList.add('hidden'));
   document.querySelectorAll('.toggle-arrow').forEach(a => a.classList.remove('open'));
 });
@@ -412,7 +592,7 @@ function renderHistoryList(goals) {
   historyCount.textContent = goals.length;
 
   if (goals.length === 0) {
-    goalHistoryList.innerHTML = '<li class="empty-state">No goals stored yet.</li>';
+    goalHistoryList.innerHTML = '<li class="empty-state">No goals stored yet. Decompose your first project above!</li>';
     return;
   }
 
@@ -454,6 +634,7 @@ function renderHistoryList(goals) {
     delBtn.innerHTML = '🗑️';
     delBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
+      playSound('click');
       if (confirm(`Delete "${goal.title}"?`)) {
         await deleteGoal(goal.id);
       }
@@ -463,7 +644,10 @@ function renderHistoryList(goals) {
     li.appendChild(left);
     li.appendChild(right);
 
-    li.addEventListener('click', () => fetchAndDisplayGoal(goal.id));
+    li.addEventListener('click', () => {
+      playSound('click');
+      fetchAndDisplayGoal(goal.id);
+    });
 
     goalHistoryList.appendChild(li);
   });
@@ -524,11 +708,12 @@ historySearch.addEventListener('input', (e) => {
 // ===================================================================
 exportMdBtn.addEventListener('click', () => {
   if (!currentGoalData) return;
+  playSound('click');
 
-  let md = `# Goal: ${currentGoalData.title}\n`;
+  let md = `# Project Plan: ${currentGoalData.title}\n`;
   md += `**Difficulty:** ${currentGoalData.difficulty} | **Estimated Days:** ~${currentGoalData.totalEstimatedDays}d\n`;
   md += `**Strategy:** ${currentGoalData.matchType || 'Rule-Based'} (${currentGoalData.matchedKeyword || ''})\n\n`;
-  md += `## Task Plan\n\n`;
+  md += `## Execution Tree Hierarchy\n\n`;
 
   function buildMdTree(tasks, depth = 0) {
     const indent = '  '.repeat(depth);
@@ -542,13 +727,14 @@ exportMdBtn.addEventListener('click', () => {
   }
 
   buildMdTree(currentGoalData.tasks);
-  md += `\n---\n*Generated by Goal Decomposition Engine (Rule-Based, 0% External AI)*\n`;
+  md += `\n---\n*Generated by Project Graveyard Goal Decomposition Engine (Rule-Based, 0% External AI)*\n`;
 
   downloadFile(`${slugify(currentGoalData.title)}-plan.md`, md, 'text/markdown');
 });
 
 exportJsonBtn.addEventListener('click', () => {
   if (!currentGoalData) return;
+  playSound('click');
   const jsonStr = JSON.stringify(currentGoalData, null, 2);
   downloadFile(`${slugify(currentGoalData.title)}-tasks.json`, jsonStr, 'application/json');
 });

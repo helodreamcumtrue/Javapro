@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Goal Decomposition Engine | Rule-Based Task Hierarchy</title>
-  <meta name="description" content="A 100% free, local, rule-based Goal Decomposition Engine built with Spring Boot and SQLite." />
+  <title>Project Graveyard | Goal Decomposition Engine</title>
+  <meta name="description" content="Where unfinished ideas find their next builder. Rule-based, 100% free, local Goal Decomposition Engine built with Spring Boot and SQLite." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,41 +12,196 @@
 </head>
 <body>
 
+  <!-- Ambient Glow Background Meshes (Matches Reference Mood & Atmosphere) -->
+  <div class="ambient-glow glow-purple" aria-hidden="true"></div>
+  <div class="ambient-glow glow-lime" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
   <!-- ================= App Navigation / Top Bar ================= -->
   <header class="top-nav">
     <div class="nav-content">
       <div class="brand">
-        <div class="brand-logo">🎯</div>
-        <div class="brand-text">
-          <h1>Goal Decomposition Engine</h1>
-          <span class="engine-badge">Rule-Based • No External AI • 100% Free & Local</span>
-        </div>
+        <a href="#" class="brand-link">
+          <div class="brand-icon-box">
+            <span class="brand-dot"></span>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PROJECT GRAVEYARD</span>
+            <span class="brand-subtitle">GOAL ENGINE</span>
+          </div>
+        </a>
       </div>
-      <div class="system-status">
-        <span class="status-indicator online"></span>
-        <span class="status-text">Engine Online (SQLite Connected)</span>
+
+      <nav class="nav-links">
+        <a href="#heroSection" class="nav-link active">Home</a>
+        <a href="#decomposerSection" class="nav-link">Browse</a>
+        <a href="#historyCardAnchor" class="nav-link">History</a>
+        <a href="#specsBarAnchor" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="soundToggleBtn" class="btn-sound-toggle" title="Toggle Sound FX">
+          <span class="sound-icon">🔊</span>
+          <span class="sound-text">Audio FX</span>
+        </button>
+        <button type="button" id="topSubmitBtn" class="btn btn-primary-lime">
+          <span>+ Submit Project</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <div class="main-wrapper">
-    <!-- Quick Specs Bar -->
-    <div class="specs-bar">
-      <div class="spec-item">
-        <span class="spec-label">Core Logic</span>
-        <span class="spec-val">Keyword Rules + Verb Heuristics</span>
+  <!-- ================= Hero Section (Reference Design) ================= -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-container">
+      
+      <!-- Hero Left: Content & Stats -->
+      <div class="hero-left">
+        <div class="hero-kicker">
+          <span class="kicker-dot">●</span>
+          <span class="kicker-text">A HOME FOR IN-PROGRESS WORK</span>
+        </div>
+
+        <h1 class="hero-title">
+          Where<br>
+          unfinished<br>
+          ideas find their<br>
+          <span class="text-lime">next builder.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Project Graveyard gives promising work a second life. Discover real projects, see what they need, and collaborate with people ready to carry them forward. Powered by deterministic, zero-AI goal decomposition.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#decomposerSection" class="btn btn-primary-lime btn-hero" id="heroBrowseBtn">
+            <span>Browse projects</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <button type="button" class="btn btn-secondary-glass btn-hero" id="heroSubmitBtn">
+            <span>Submit a project</span>
+            <span class="btn-arrow-diag">↗</span>
+          </button>
+        </div>
+
+        <!-- 3-Column Hero Metrics -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">10K+</span>
+            <span class="stat-label">BUILDERS LOOKING</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2,400</span>
+            <span class="stat-label">PROJECTS REVIVED</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.8/5</span>
+            <span class="stat-label">COLLABORATION SCORE</span>
+          </div>
+        </div>
       </div>
-      <div class="spec-item">
-        <span class="spec-label">Latency</span>
-        <span class="spec-val highlight">&lt; 2ms (Deterministic)</span>
+
+      <!-- Hero Right: Interactive Floating Project Signal Card -->
+      <div class="hero-right">
+        <div class="signal-card-wrapper">
+          <div class="signal-card" id="demoSignalCard" role="button" tabindex="0" title="Click to test decompose this project live!">
+            
+            <!-- Signal Card Header -->
+            <div class="signal-card-header">
+              <div class="signal-badge">
+                <span class="pulse-indicator"></span>
+                <span class="signal-badge-text">PROJECT SIGNAL</span>
+              </div>
+              <span class="live-pill">LIVE</span>
+            </div>
+
+            <!-- Signal Project Info -->
+            <div class="signal-project-row">
+              <div class="project-avatar-box">
+                <svg class="sparkle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6L12 2z" stroke-linejoin="round" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="project-details">
+                <h3 class="project-name">AI Study Planner</h3>
+                <p class="project-desc">A second builder just joined the work.</p>
+              </div>
+            </div>
+
+            <!-- 3 Stat Boxes Grid -->
+            <div class="signal-metrics-grid">
+              <div class="signal-box">
+                <span class="box-label">PROGRESS</span>
+                <span class="box-value text-lime">78%</span>
+              </div>
+              <div class="signal-box">
+                <span class="box-label">BUILDERS</span>
+                <span class="box-value">03</span>
+              </div>
+              <div class="signal-box">
+                <span class="box-label">OPEN</span>
+                <span class="box-value">02</span>
+              </div>
+            </div>
+
+            <!-- Collaborator Notification Banner -->
+            <div class="signal-banner">
+              <span class="banner-icon">👤</span>
+              <span class="banner-message"><strong>Maya</strong> is looking for UX research &amp; ML integration.</span>
+            </div>
+
+            <!-- Attached Rating Pill Badge (Bottom-Left) -->
+            <div class="signal-rating-pill">
+              <span class="rating-sub">PROJECT RATING</span>
+              <div class="rating-main">
+                <span class="rating-num">4.8</span>
+                <span class="rating-star">★</span>
+              </div>
+            </div>
+
+            <!-- Subtle Interactive Tap Overlay -->
+            <div class="signal-hint">
+              <span>⚡ Click to decompose into execution tree</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="spec-item">
-        <span class="spec-label">Storage</span>
-        <span class="spec-val">Local SQLite (Zero Cloud)</span>
+
+    </div>
+  </section>
+
+  <!-- ================= Quick Specs Bar ================= -->
+  <section class="specs-bar-section" id="specsBarAnchor">
+    <div class="specs-container">
+      <div class="specs-bar">
+        <div class="spec-item">
+          <span class="spec-label">Core Logic</span>
+          <span class="spec-val">Keyword Rules + Verb Heuristics</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Latency</span>
+          <span class="spec-val highlight">&lt; 2ms (Deterministic)</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Storage</span>
+          <span class="spec-val">Local SQLite (Zero Cloud)</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">API Cost</span>
+          <span class="spec-val free">$0.00 / Free Forever</span>
+        </div>
       </div>
-      <div class="spec-item">
-        <span class="spec-label">API Cost</span>
-        <span class="spec-val free">$0.00 / Free Forever</span>
+    </div>
+  </section>
+
+  <!-- ================= Main Decomposer Dashboard ================= -->
+  <main class="main-wrapper" id="decomposerSection">
+    
+    <div class="dashboard-header-bar">
+      <div class="dashboard-title-wrap">
+        <span class="section-tag">● DECOMPOSITION STUDIO</span>
+        <h2 class="section-title">Break Down Any Target Goal</h2>
+        <p class="section-subtitle">Deterministic rule chaining • Zero API dependencies • Instant topological hierarchy</p>
       </div>
     </div>
 
@@ -58,9 +213,13 @@
         <!-- Goal Input Card -->
         <div class="card input-card">
           <div class="card-header">
-            <h2>Decompose a New Goal</h2>
+            <div class="card-title-group">
+              <span class="card-kicker">INPUT STUDIO</span>
+              <h2>Decompose a New Goal</h2>
+            </div>
             <p class="card-subtitle">Input any target to generate a structured task tree</p>
           </div>
+          
           <form id="goalForm" class="goal-form">
             <div class="form-group">
               <label for="goalTitle">Your Goal Statement</label>
@@ -70,7 +229,7 @@
                   type="text" 
                   id="goalTitle" 
                   name="goalTitle" 
-                  placeholder='e.g., "Learn Web Development" or "Build a Drone"' 
+                  placeholder='e.g., "AI Study Planner", "Learn Web Development", or "Build a Drone"' 
                   autocomplete="off"
                   required 
                 />
@@ -104,7 +263,7 @@
               </div>
             </div>
 
-            <button type="submit" id="decomposeBtn" class="btn btn-primary btn-block">
+            <button type="submit" id="decomposeBtn" class="btn btn-primary-lime btn-block">
               <span class="btn-text">Decompose Goal</span>
               <span class="btn-spinner hidden"></span>
             </button>
@@ -114,23 +273,25 @@
 
           <!-- Quick presets -->
           <div class="presets-section">
-            <span class="presets-title">Quick Demos & Topic Presets:</span>
+            <span class="presets-title">Quick Demos &amp; Topic Presets:</span>
             <div class="chips-grid">
+              <button type="button" class="preset-chip featured" data-goal="AI Study Planner" data-diff="medium">✨ AI Study Planner</button>
               <button type="button" class="preset-chip" data-goal="Learn Web Development" data-diff="medium">💻 Learn Web Development</button>
               <button type="button" class="preset-chip" data-goal="Build a Mobile App" data-diff="hard">📱 Build a Mobile App</button>
               <button type="button" class="preset-chip" data-goal="Learn Python" data-diff="medium">🐍 Learn Python</button>
               <button type="button" class="preset-chip" data-goal="Prepare for Exam" data-diff="medium">📚 Prepare for Exam</button>
               <button type="button" class="preset-chip" data-goal="Start a Startup" data-diff="hard">🚀 Start a Startup</button>
               <button type="button" class="preset-chip" data-goal="Learn Guitar" data-diff="easy">🎸 Learn Guitar</button>
-              <button type="button" class="preset-chip" data-goal="Build an Autonomous Drone" data-diff="medium">🤖 Build an Autonomous Drone</button>
+              <button type="button" class="preset-chip" data-goal="Build an Autonomous Drone" data-diff="medium">🤖 Autonomous Drone</button>
             </div>
           </div>
         </div>
 
         <!-- Previous Goals History Card -->
-        <div class="card history-card">
+        <div class="card history-card" id="historyCardAnchor">
           <div class="card-header flex-between">
             <div>
+              <span class="card-kicker">PERSISTENCE</span>
               <h2>Goal History</h2>
               <p class="card-subtitle">Stored in local SQLite</p>
             </div>
@@ -138,7 +299,10 @@
           </div>
 
           <div class="search-wrap">
-            <input type="text" id="historySearch" placeholder="Search past goals..." />
+            <div class="search-input-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="historySearch" placeholder="Search past goals..." />
+            </div>
           </div>
 
           <div class="history-list-wrap">
@@ -151,11 +315,15 @@
 
       <!-- Column 2: Decomposed Plan Output Panel -->
       <section class="main-content-col">
+        
         <!-- Empty Placeholder State -->
         <div id="emptyPlanState" class="card empty-plan-card">
-          <div class="empty-illustration">⚡</div>
+          <div class="empty-illustration-ring">
+            <div class="empty-illustration">⚡</div>
+          </div>
           <h3>Ready for Goal Decomposition</h3>
-          <p>Type a goal on the left or select a preset to watch the rule engine parse keywords, evaluate dependencies, and construct an actionable tree hierarchy.</p>
+          <p>Type a goal on the left or click any preset to watch the deterministic engine parse keywords, evaluate dependencies, and construct an actionable tree hierarchy.</p>
+          
           <div class="feature-bullets">
             <div class="bullet-card">
               <span class="bullet-icon">🌳</span>
@@ -180,7 +348,7 @@
           <!-- Plan Header -->
           <div class="plan-header">
             <div class="plan-title-box">
-              <span class="plan-kicker">Generated Execution Plan</span>
+              <span class="plan-kicker">GENERATED EXECUTION ROADMAP</span>
               <h2 id="resultTitle" class="plan-title">Plan Name</h2>
               <div class="plan-badges">
                 <span id="resultDifficulty" class="badge badge-diff">Medium</span>
@@ -189,21 +357,22 @@
               </div>
             </div>
             <div class="plan-actions">
-              <button id="exportMdBtn" class="btn btn-secondary btn-sm" title="Download Markdown Checklist">
+              <button id="exportMdBtn" class="btn btn-secondary-glass btn-sm" title="Download Markdown Checklist">
                 <span>📋 Export Markdown</span>
               </button>
-              <button id="exportJsonBtn" class="btn btn-secondary btn-sm" title="Download JSON Tree">
-                <span>JSON</span>
+              <button id="exportJsonBtn" class="btn btn-secondary-glass btn-sm" title="Download JSON Tree">
+                <span>{ } JSON</span>
               </button>
             </div>
           </div>
 
-          <!-- Rule Engine Inspector Box -->
+          <!-- Rule Engine Inspector Box (Matches Reference Signal Card Details) -->
           <div class="inspector-card">
             <div class="inspector-header">
-              <span class="inspector-title">
-                <span class="pulse-dot"></span> Rule Engine Execution Trace
-              </span>
+              <div class="inspector-title">
+                <span class="pulse-indicator"></span>
+                <span>RULE ENGINE EXECUTION TRACE</span>
+              </div>
               <span id="ruleMatchType" class="strategy-badge">TOPIC_MATCH</span>
             </div>
             <div class="inspector-body">
@@ -242,7 +411,7 @@
             </div>
             <div class="tree-controls">
               <button id="expandAllBtn" class="btn-text-action">Expand All</button>
-              <span class="divider">|</span>
+              <span class="divider">/</span>
               <button id="collapseAllBtn" class="btn-text-action">Collapse All</button>
             </div>
           </div>
@@ -255,12 +424,24 @@
       </section>
 
     </div>
-  </div>
+  </main>
 
-  <!-- Footer -->
+  <!-- ================= App Footer ================= -->
   <footer class="app-footer">
     <div class="footer-content">
-      <p><strong>Goal Decomposition Engine</strong> • Spring Boot 3 + SQLite + Vanilla Web • Designed for College & Production Demonstration</p>
+      <div class="footer-left">
+        <div class="footer-brand">
+          <span class="brand-dot"></span>
+          <span>PROJECT GRAVEYARD • GOAL DECOMPOSITION ENGINE</span>
+        </div>
+        <p>Spring Boot 3 + SQLite + Local Heuristic Parser • 100% Free, Offline &amp; Zero AI Cost</p>
+      </div>
+      <div class="footer-right">
+        <span class="system-status-pill">
+          <span class="status-indicator online"></span>
+          <span>Engine Online (SQLite Connected)</span>
+        </span>
+      </div>
     </div>
   </footer>
 
