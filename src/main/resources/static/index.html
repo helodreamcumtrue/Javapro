@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Graveyard | Goal Decomposition Engine</title>
-  <meta name="description" content="Where unfinished ideas find their next builder. Rule-based, 100% free, local Goal Decomposition Engine built with Spring Boot and SQLite." />
+  <title>Goal Decomposition Engine | Deterministic Task Breakdown</title>
+  <meta name="description" content="Rule-based, offline Goal Decomposition Engine built with Spring Boot and SQLite. Decomposes any goal statement into structured, topologically ordered task hierarchies." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- Ambient Glow Background Meshes (Matches Reference Mood & Atmosphere) -->
+  <!-- Ambient Glow Background Meshes -->
   <div class="ambient-glow glow-purple" aria-hidden="true"></div>
   <div class="ambient-glow glow-lime" aria-hidden="true"></div>
   <div class="bg-grid-overlay" aria-hidden="true"></div>
@@ -26,26 +26,32 @@
             <span class="brand-dot"></span>
           </div>
           <div class="brand-text">
-            <span class="brand-title">PROJECT GRAVEYARD</span>
-            <span class="brand-subtitle">GOAL ENGINE</span>
+            <span class="brand-title">GOAL ENGINE</span>
+            <span class="brand-subtitle">DECOMPOSITION STUDIO</span>
           </div>
         </a>
       </div>
 
       <nav class="nav-links">
         <a href="#heroSection" class="nav-link active">Home</a>
-        <a href="#decomposerSection" class="nav-link">Browse</a>
+        <a href="#decomposerSection" class="nav-link">Decomposer</a>
         <a href="#historyCardAnchor" class="nav-link">History</a>
-        <a href="#specsBarAnchor" class="nav-link">About</a>
+        <a href="#specsBarAnchor" class="nav-link">Specs</a>
       </nav>
 
       <div class="nav-actions">
         <button type="button" id="soundToggleBtn" class="btn-sound-toggle" title="Toggle Sound FX">
-          <span class="sound-icon">🔊</span>
+          <span class="sound-icon">
+            <svg class="sound-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </span>
           <span class="sound-text">Audio FX</span>
         </button>
         <button type="button" id="topSubmitBtn" class="btn btn-primary-lime">
-          <span>+ Submit Project</span>
+          <span>+ Decompose Goal</span>
         </button>
       </div>
     </div>
@@ -144,24 +150,34 @@
               </div>
             </div>
 
-            <!-- Collaborator Notification Banner -->
+            <!-- Rule Pipeline Notification Banner -->
             <div class="signal-banner">
-              <span class="banner-icon">👤</span>
-              <span class="banner-message"><strong>Maya</strong> is looking for UX research &amp; ML integration.</span>
+              <svg class="banner-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span class="banner-message"><strong>Rule Engine:</strong> 3-tier deterministic pipeline active.</span>
             </div>
 
             <!-- Attached Rating Pill Badge (Bottom-Left) -->
             <div class="signal-rating-pill">
-              <span class="rating-sub">PROJECT RATING</span>
+              <span class="rating-sub">PLAN CONFIDENCE</span>
               <div class="rating-main">
                 <span class="rating-num">4.8</span>
-                <span class="rating-star">★</span>
+                <svg class="rating-star-svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
               </div>
             </div>
 
             <!-- Subtle Interactive Tap Overlay -->
             <div class="signal-hint">
-              <span>⚡ Click to decompose into execution tree</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="13 17 18 12 13 7"></polyline>
+                <polyline points="6 17 11 12 6 7"></polyline>
+              </svg>
+              <span>Click to decompose this sample goal</span>
             </div>
           </div>
         </div>
@@ -224,7 +240,15 @@
             <div class="form-group">
               <label for="goalTitle">Your Goal Statement</label>
               <div class="input-with-icon">
-                <span class="input-icon">🎯</span>
+                <span class="input-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="22" y1="12" x2="18" y2="12"></line>
+                    <line x1="6" y1="12" x2="2" y2="12"></line>
+                    <line x1="12" y1="6" x2="12" y2="2"></line>
+                    <line x1="12" y1="22" x2="12" y2="18"></line>
+                  </svg>
+                </span>
                 <input 
                   type="text" 
                   id="goalTitle" 
@@ -275,14 +299,14 @@
           <div class="presets-section">
             <span class="presets-title">Quick Demos &amp; Topic Presets:</span>
             <div class="chips-grid">
-              <button type="button" class="preset-chip featured" data-goal="AI Study Planner" data-diff="medium">✨ AI Study Planner</button>
-              <button type="button" class="preset-chip" data-goal="Learn Web Development" data-diff="medium">💻 Learn Web Development</button>
-              <button type="button" class="preset-chip" data-goal="Build a Mobile App" data-diff="hard">📱 Build a Mobile App</button>
-              <button type="button" class="preset-chip" data-goal="Learn Python" data-diff="medium">🐍 Learn Python</button>
-              <button type="button" class="preset-chip" data-goal="Prepare for Exam" data-diff="medium">📚 Prepare for Exam</button>
-              <button type="button" class="preset-chip" data-goal="Start a Startup" data-diff="hard">🚀 Start a Startup</button>
-              <button type="button" class="preset-chip" data-goal="Learn Guitar" data-diff="easy">🎸 Learn Guitar</button>
-              <button type="button" class="preset-chip" data-goal="Build an Autonomous Drone" data-diff="medium">🤖 Autonomous Drone</button>
+              <button type="button" class="preset-chip featured" data-goal="AI Study Planner" data-diff="medium">AI Study Planner</button>
+              <button type="button" class="preset-chip" data-goal="Learn Web Development" data-diff="medium">Learn Web Development</button>
+              <button type="button" class="preset-chip" data-goal="Build a Mobile App" data-diff="hard">Build a Mobile App</button>
+              <button type="button" class="preset-chip" data-goal="Learn Python" data-diff="medium">Learn Python</button>
+              <button type="button" class="preset-chip" data-goal="Prepare for Exam" data-diff="medium">Prepare for Exam</button>
+              <button type="button" class="preset-chip" data-goal="Start a Startup" data-diff="hard">Start a Startup</button>
+              <button type="button" class="preset-chip" data-goal="Learn Guitar" data-diff="easy">Learn Guitar</button>
+              <button type="button" class="preset-chip" data-goal="Build an Autonomous Drone" data-diff="medium">Autonomous Drone</button>
             </div>
           </div>
         </div>
@@ -300,7 +324,12 @@
 
           <div class="search-wrap">
             <div class="search-input-box">
-              <span class="search-icon">🔍</span>
+              <span class="search-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
               <input type="text" id="historySearch" placeholder="Search past goals..." />
             </div>
           </div>
@@ -319,24 +348,54 @@
         <!-- Empty Placeholder State -->
         <div id="emptyPlanState" class="card empty-plan-card">
           <div class="empty-illustration-ring">
-            <div class="empty-illustration">⚡</div>
+            <div class="empty-illustration">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
           </div>
           <h3>Ready for Goal Decomposition</h3>
-          <p>Type a goal on the left or click any preset to watch the deterministic engine parse keywords, evaluate dependencies, and construct an actionable tree hierarchy.</p>
+          <p>Type a goal on the left or select any preset to initiate deterministic rule parsing, topological dependency assignment, and sequential task generation.</p>
           
           <div class="feature-bullets">
             <div class="bullet-card">
-              <span class="bullet-icon">🌳</span>
+              <span class="bullet-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </span>
               <h4>Parent-Child Trees</h4>
               <p>Supports nested subtasks and structured phases.</p>
             </div>
             <div class="bullet-card">
-              <span class="bullet-icon">⛓️</span>
+              <span class="bullet-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </span>
               <h4>Dependency Chaining</h4>
               <p>Tracks which steps must be completed before others.</p>
             </div>
             <div class="bullet-card">
-              <span class="bullet-icon">⚖️</span>
+              <span class="bullet-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" y1="21" x2="4" y2="14"></line>
+                  <line x1="4" y1="10" x2="4" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12" y2="3"></line>
+                  <line x1="20" y1="21" x2="20" y2="16"></line>
+                  <line x1="20" y1="12" x2="20" y2="3"></line>
+                  <line x1="1" y1="14" x2="7" y2="14"></line>
+                  <line x1="9" y1="8" x2="15" y2="8"></line>
+                  <line x1="17" y1="16" x2="23" y2="16"></line>
+                </svg>
+              </span>
               <h4>Deterministic Scoring</h4>
               <p>Priority weighting combined with topological ordering.</p>
             </div>
@@ -358,10 +417,20 @@
             </div>
             <div class="plan-actions">
               <button id="exportMdBtn" class="btn btn-secondary-glass btn-sm" title="Download Markdown Checklist">
-                <span>📋 Export Markdown</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span>Export Markdown</span>
               </button>
               <button id="exportJsonBtn" class="btn btn-secondary-glass btn-sm" title="Download JSON Tree">
-                <span>{ } JSON</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <span>Export JSON</span>
               </button>
             </div>
           </div>
@@ -428,19 +497,87 @@
 
   <!-- ================= App Footer ================= -->
   <footer class="app-footer">
-    <div class="footer-content">
-      <div class="footer-left">
-        <div class="footer-brand">
-          <span class="brand-dot"></span>
-          <span>PROJECT GRAVEYARD • GOAL DECOMPOSITION ENGINE</span>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Col 1: System Info -->
+        <div class="footer-col footer-col-main">
+          <div class="footer-brand">
+            <span class="brand-dot"></span>
+            <span class="footer-brand-title">GOAL DECOMPOSITION ENGINE</span>
+          </div>
+          <p class="footer-desc">
+            A deterministic execution planner that compiles high-level objectives into actionable, topologically sorted task hierarchies with time estimates and priority weighting.
+          </p>
+          <div class="footer-meta-tags">
+            <span class="meta-tag">v1.0.0</span>
+            <span class="meta-tag">Port 8080</span>
+            <span class="meta-tag">SQLite Embedded</span>
+          </div>
         </div>
-        <p>Spring Boot 3 + SQLite + Local Heuristic Parser • 100% Free, Offline &amp; Zero AI Cost</p>
+
+        <!-- Col 2: Decomposition Pipeline -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Engine Pipeline</h4>
+          <ul class="footer-links">
+            <li><span class="footer-spec-name">Phase 1</span> <span class="footer-spec-desc">Topic Rule Matcher</span></li>
+            <li><span class="footer-spec-name">Phase 2</span> <span class="footer-spec-desc">Verb Template Extraction</span></li>
+            <li><span class="footer-spec-name">Phase 3</span> <span class="footer-spec-desc">6-Stage Heuristic Fallback</span></li>
+            <li><span class="footer-spec-name">Phase 4</span> <span class="footer-spec-desc">Topological Sorting</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: API Endpoints -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">REST Services</h4>
+          <ul class="footer-endpoints">
+            <li><span class="endpoint-method post">POST</span> <code>/goal</code> <span class="endpoint-desc">Decompose target</span></li>
+            <li><span class="endpoint-method get">GET</span> <code>/goals</code> <span class="endpoint-desc">List goal history</span></li>
+            <li><span class="endpoint-method get">GET</span> <code>/tasks/{id}</code> <span class="endpoint-desc">Fetch task tree</span></li>
+            <li><span class="endpoint-method patch">PATCH</span> <code>/tasks/{id}/toggle</code> <span class="endpoint-desc">Toggle status</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Engine Architecture -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">System Specs</h4>
+          <div class="footer-specs-list">
+            <div class="spec-row">
+              <span class="spec-key">Runtime:</span>
+              <span class="spec-val">Java 17 / Spring Boot 3.2.5</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Storage:</span>
+              <span class="spec-val">SQLite (File-backed JDBC)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Latency:</span>
+              <span class="spec-val highlight">&lt; 2ms (Deterministic)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Privacy:</span>
+              <span class="spec-val">100% Offline / Zero Remote Calls</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer-right">
-        <span class="system-status-pill">
-          <span class="status-indicator online"></span>
-          <span>Engine Online (SQLite Connected)</span>
-        </span>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-left">
+          <span>Goal Decomposition Engine &bull; Deterministic execution roadmap generation system</span>
+        </div>
+        <div class="footer-bottom-right">
+          <div class="system-status-indicator">
+            <span class="status-indicator online"></span>
+            <span class="status-text">Engine Online (Localhost:8080)</span>
+          </div>
+          <a href="#heroSection" class="back-to-top-link" id="backToTopBtn">
+            <span>Back to top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>

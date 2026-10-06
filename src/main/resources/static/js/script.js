@@ -135,14 +135,28 @@ function playSound(type) {
 // Update Audio Toggle Button State
 function updateSoundButton() {
   if (!soundToggleBtn) return;
+  const soundIcon = soundToggleBtn.querySelector('.sound-icon');
+  const soundText = soundToggleBtn.querySelector('.sound-text');
   if (soundEnabled) {
     soundToggleBtn.classList.add('active');
-    soundToggleBtn.querySelector('.sound-icon').textContent = '🔊';
-    soundToggleBtn.querySelector('.sound-text').textContent = 'Sound ON';
+    if (soundIcon) {
+      soundIcon.innerHTML = `<svg class="sound-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>`;
+    }
+    if (soundText) soundText.textContent = 'Audio ON';
   } else {
     soundToggleBtn.classList.remove('active');
-    soundToggleBtn.querySelector('.sound-icon').textContent = '🔇';
-    soundToggleBtn.querySelector('.sound-text').textContent = 'Sound OFF';
+    if (soundIcon) {
+      soundIcon.innerHTML = `<svg class="sound-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>`;
+    }
+    if (soundText) soundText.textContent = 'Audio OFF';
   }
 }
 
@@ -410,7 +424,7 @@ function createTaskElement(task, indexStr) {
   if (task.dependsOnTaskId) {
     const depChip = document.createElement('span');
     depChip.className = 'task-dep-chip';
-    depChip.textContent = `🔗 Step ${task.dependsOnTaskId}`;
+    depChip.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> Dep: Step ${task.dependsOnTaskId}`;
     content.appendChild(depChip);
   }
 
@@ -631,7 +645,7 @@ function renderHistoryList(goals) {
     delBtn.type = 'button';
     delBtn.className = 'delete-goal-btn';
     delBtn.title = 'Delete Goal';
-    delBtn.innerHTML = '🗑️';
+    delBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`;
     delBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
       playSound('click');
