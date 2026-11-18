@@ -20,13 +20,16 @@ const errorBox = document.getElementById('errorBox');
 const emptyPlanState = document.getElementById('emptyPlanState');
 const resultPanel = document.getElementById('resultPanel');
 const resultTitle = document.getElementById('resultTitle');
+const resultDepth = document.getElementById('resultDepth');
 const resultDifficulty = document.getElementById('resultDifficulty');
 const resultTimeline = document.getElementById('resultTimeline');
 const resultTaskStats = document.getElementById('resultTaskStats');
+const resultBreakdown = document.getElementById('resultBreakdown');
 
 const ruleMatchType = document.getElementById('ruleMatchType');
 const ruleExplanation = document.getElementById('ruleExplanation');
 const ruleKeyword = document.getElementById('ruleKeyword');
+const ruleDepth = document.getElementById('ruleDepth');
 
 const progressBar = document.getElementById('progressBar');
 const progressPercent = document.getElementById('progressPercent');
@@ -224,6 +227,21 @@ if (heroBrowseBtn) {
 }
 
 // ===================================================================
+// Depth Radio Selection Sync
+// ===================================================================
+document.querySelectorAll('input[name="depth"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    playSound('click');
+    document.querySelectorAll('.depth-btn').forEach(btn => btn.classList.remove('active'));
+    const parentLabel = radio.closest('.depth-option');
+    if (parentLabel) {
+      const btn = parentLabel.querySelector('.depth-btn');
+      if (btn) btn.classList.add('active');
+    }
+  });
+});
+
+// ===================================================================
 // Difficulty Radio Selection Sync
 // ===================================================================
 document.querySelectorAll('input[name="difficulty"]').forEach(radio => {
@@ -271,6 +289,9 @@ goalForm.addEventListener('submit', async (e) => {
   const diffRadio = document.querySelector('input[name="difficulty"]:checked');
   const difficulty = diffRadio ? diffRadio.value : 'medium';
 
+  const depthRadio = document.querySelector('input[name="depth"]:checked');
+  const depth = depthRadio ? depthRadio.value : 'in-depth';
+
   if (!title) {
     showError('Please enter a valid goal statement.');
     return;
@@ -282,7 +303,7 @@ goalForm.addEventListener('submit', async (e) => {
     const response = await fetch(`${API_BASE}/goal`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, difficulty })
+      body: JSON.stringify({ title, difficulty, depth })
     });
 
     const data = await response.json();
@@ -317,10 +338,34 @@ function renderPlan(goalResponse) {
   resultDifficulty.textContent = goalResponse.difficulty;
   resultTimeline.textContent = `~${goalResponse.totalEstimatedDays} days estimated`;
 
+  // Depth & Breakdown Badges
+  const isDeep = (goalResponse.depth || 'in-depth') === 'in-depth';
+  if (resultDepth) {
+    resultDepth.textContent = isDeep ? 'In-Depth Plan' : 'Standard Plan';
+    resultDepth.className = isDeep ? 'badge badge-depth deep' : 'badge badge-depth standard';
+  }
+
+  const phases = goalResponse.totalPhaseCount || (goalResponse.tasks ? goalResponse.tasks.length : 0);
+  const subtasks = (goalResponse.totalSubtaskCount != null) ? goalResponse.totalSubtaskCount : (goalResponse.totalTaskCount - phases);
+
+  if (resultTaskStats) {
+    resultTaskStats.textContent = `${goalResponse.totalTaskCount} tasks`;
+  }
+  if (resultBreakdown) {
+    resultBreakdown.textContent = `${phases} phases • ${subtasks} sub-steps`;
+  }
+
   // Rule Inspector Trace
   ruleMatchType.textContent = goalResponse.matchType || 'TOPIC_MATCH';
   ruleExplanation.textContent = goalResponse.explanation || 'Rule matching applied.';
   ruleKeyword.textContent = goalResponse.matchedKeyword || 'none';
+
+  if (ruleDepth) {
+    ruleDepth.textContent = isDeep
+      ? 'IN-DEPTH (Granular Hierarchy & Execution Sub-Steps Active)'
+      : 'STANDARD (High-level Phase Milestones)';
+    ruleDepth.className = isDeep ? 'ins-val text-lime' : 'ins-val text-cyan';
+  }
 
   // Strategy pill coloring (Neon Lime / Cyan / Amber)
   ruleMatchType.className = 'strategy-badge';

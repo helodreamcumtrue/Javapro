@@ -66,26 +66,68 @@ public class DecompositionService {
         public String matchType;
         public String matchedKeyword;
         public String explanation;
+        public String depth;
+        public int totalTasks;
+        public int totalPhases;
+        public int totalSubtasks;
 
         public DecompositionPlan(List<TaskBuildResult> tasks, String matchType, String matchedKeyword, String explanation) {
+            this(tasks, matchType, matchedKeyword, explanation, "in-depth");
+        }
+
+        public DecompositionPlan(List<TaskBuildResult> tasks, String matchType, String matchedKeyword, String explanation, String depth) {
             this.tasks = tasks;
             this.matchType = matchType;
             this.matchedKeyword = matchedKeyword;
             this.explanation = explanation;
+            this.depth = (depth == null || depth.isBlank()) ? "in-depth" : depth;
+
+            int phases = 0;
+            int subtasks = 0;
+            if (tasks != null) {
+                for (TaskBuildResult t : tasks) {
+                    phases++;
+                    subtasks += countSubtasks(t);
+                }
+            }
+            this.totalPhases = phases;
+            this.totalSubtasks = subtasks;
+            this.totalTasks = phases + subtasks;
+        }
+
+        private int countSubtasks(TaskBuildResult node) {
+            if (node.children == null || node.children.isEmpty()) return 0;
+            int count = node.children.size();
+            for (TaskBuildResult child : node.children) {
+                count += countSubtasks(child);
+            }
+            return count;
         }
     }
 
     public List<TaskBuildResult> decompose(String goalTitle, String difficulty) {
-        return decomposePlan(goalTitle, difficulty).tasks;
+        return decompose(goalTitle, difficulty, "in-depth");
+    }
+
+    public List<TaskBuildResult> decompose(String goalTitle, String difficulty, String depth) {
+        return decomposePlan(goalTitle, difficulty, depth).tasks;
     }
 
     public DecompositionPlan decomposePlan(String goalTitle, String difficulty) {
+        return decomposePlan(goalTitle, difficulty, "in-depth");
+    }
+
+    public DecompositionPlan decomposePlan(String goalTitle, String difficulty, String depth) {
         String cleaned = cleanGoal(goalTitle);
         double multiplier = difficultyMultiplier(difficulty);
+        boolean isInDepth = !"standard".equalsIgnoreCase(depth);
+        String resolvedDepth = isInDepth ? "in-depth" : "standard";
 
         String matchType = "DEFAULT";
         String matchedKeyword = "general-plan";
-        String explanation = "Applied generalized heuristic breakdown template";
+        String explanation = isInDepth
+                ? "Applied comprehensive 6-phase in-depth execution framework with granular subtasks"
+                : "Applied standard 6-phase goal execution framework";
 
         // 1. Topic Match
         MatchedRule topicMatch = findTopicMatch(cleaned);
@@ -95,7 +137,9 @@ public class DecompositionService {
             matchedTasks = topicMatch.tasks;
             matchType = "TOPIC";
             matchedKeyword = topicMatch.keyword;
-            explanation = "Matched specialized topic curriculum for '" + topicMatch.keyword + "'";
+            explanation = isInDepth
+                    ? "Matched in-depth specialized curriculum for '" + topicMatch.keyword + "' with granular execution sub-steps"
+                    : "Matched specialized topic curriculum for '" + topicMatch.keyword + "'";
         }
 
         // 2. Verb Template Match
@@ -105,7 +149,9 @@ public class DecompositionService {
                 matchedTasks = verbMatch.tasks;
                 matchType = "VERB";
                 matchedKeyword = verbMatch.keyword;
-                explanation = "Matched action verb template '" + verbMatch.keyword + "' targeting '" + verbMatch.topic + "'";
+                explanation = isInDepth
+                        ? "Matched action verb template '" + verbMatch.keyword + "' targeting '" + verbMatch.topic + "' with full phase sub-steps"
+                        : "Matched action verb template '" + verbMatch.keyword + "' targeting '" + verbMatch.topic + "'";
             }
         }
 
@@ -114,10 +160,12 @@ public class DecompositionService {
             matchedTasks = applyDefault(goalTitle);
             matchType = "DEFAULT";
             matchedKeyword = "default";
-            explanation = "Applied 6-phase goal execution framework";
+            explanation = isInDepth
+                    ? "Applied comprehensive 6-phase goal execution framework with multi-tier milestones"
+                    : "Applied standard 6-phase goal execution framework";
         }
 
-        List<TaskBuildResult> result = buildTree(matchedTasks, multiplier, null);
+        List<TaskBuildResult> result = buildTree(matchedTasks, multiplier, null, isInDepth);
 
         // HARD difficulty: add one extra advanced/deep-dive step at the end
         if ("hard".equalsIgnoreCase(difficulty)) {
@@ -126,11 +174,24 @@ public class DecompositionService {
             extra.priority = "MEDIUM";
             extra.estimatedDays = Math.max(2, (int) Math.round(5 * multiplier));
             extra.children = new ArrayList<>();
+            if (isInDepth) {
+                TaskBuildResult sub1 = new TaskBuildResult();
+                sub1.description = "Profile performance bottlenecks, memory allocation & stress limits";
+                sub1.priority = "HIGH";
+                sub1.estimatedDays = Math.max(1, (int) Math.round(2 * multiplier));
+                extra.children.add(sub1);
+
+                TaskBuildResult sub2 = new TaskBuildResult();
+                sub2.description = "Implement security hardening, audit checklists & disaster recovery protocols";
+                sub2.priority = "MEDIUM";
+                sub2.estimatedDays = Math.max(1, (int) Math.round(2 * multiplier));
+                extra.children.add(sub2);
+            }
             result.add(extra);
         }
 
         assignOrderScoreAndDependencies(result, 0);
-        return new DecompositionPlan(result, matchType, matchedKeyword, explanation);
+        return new DecompositionPlan(result, matchType, matchedKeyword, explanation, resolvedDepth);
     }
 
     private String cleanGoal(String raw) {
@@ -200,17 +261,22 @@ public class DecompositionService {
         return topic;
     }
 
-    /** Replaces the {topic} / {goal} placeholder in every task description with the actual phrase. */
+    /** Replaces the {topic} / {goal} placeholder in every task description and nested subtask with the actual phrase. */
     private List<RuleTask> substituteTopic(List<RuleTask> templateTasks, String topic) {
+        if (templateTasks == null) return new ArrayList<>();
         List<RuleTask> out = new ArrayList<>();
         for (RuleTask t : templateTasks) {
             RuleTask copy = new RuleTask();
-            copy.description = t.description
-                    .replace("{topic}", topic)
-                    .replace("{goal}", topic);
+            copy.description = (t.description != null)
+                    ? t.description.replace("{topic}", topic).replace("{goal}", topic)
+                    : "";
             copy.priority = t.priority;
             copy.estimatedDays = t.estimatedDays;
-            copy.subtasks = t.subtasks;
+            if (t.subtasks != null && !t.subtasks.isEmpty()) {
+                copy.subtasks = substituteTopic(t.subtasks, topic);
+            } else {
+                copy.subtasks = new ArrayList<>();
+            }
             out.add(copy);
         }
         return out;
@@ -232,19 +298,64 @@ public class DecompositionService {
         }
     }
 
-    private List<TaskBuildResult> buildTree(List<RuleTask> ruleTasks, double multiplier, TaskBuildResult parent) {
+    private List<TaskBuildResult> buildTree(List<RuleTask> ruleTasks, double multiplier, TaskBuildResult parent, boolean isInDepth) {
         List<TaskBuildResult> nodes = new ArrayList<>();
+        if (ruleTasks == null) return nodes;
+
         for (RuleTask rt : ruleTasks) {
             TaskBuildResult node = new TaskBuildResult();
             node.description = rt.description;
             node.priority = (rt.priority == null) ? "MEDIUM" : rt.priority.toUpperCase(Locale.ROOT);
             node.estimatedDays = Math.max(1, (int) Math.round(rt.estimatedDays * multiplier));
-            node.children = (rt.subtasks == null || rt.subtasks.isEmpty())
-                    ? new ArrayList<>()
-                    : buildTree(rt.subtasks, multiplier, node);
+
+            if (isInDepth) {
+                if (rt.subtasks != null && !rt.subtasks.isEmpty()) {
+                    node.children = buildTree(rt.subtasks, multiplier, node, isInDepth);
+                } else if (parent == null) {
+                    // Top-level task lacking subtasks: synthesize contextual in-depth sub-steps!
+                    List<RuleTask> synthesized = synthesizeInDepthSubtasks(rt.description, multiplier);
+                    node.children = buildTree(synthesized, multiplier, node, isInDepth);
+                } else {
+                    node.children = new ArrayList<>();
+                }
+            } else {
+                node.children = new ArrayList<>();
+            }
             nodes.add(node);
         }
         return nodes;
+    }
+
+    private List<RuleTask> synthesizeInDepthSubtasks(String taskDescription, double multiplier) {
+        List<RuleTask> subtasks = new ArrayList<>();
+        String lower = (taskDescription == null) ? "" : taskDescription.toLowerCase(Locale.ROOT);
+
+        if (lower.contains("learn") || lower.contains("study") || lower.contains("syntax")) {
+            subtasks.add(createSynthesizedSubtask("Explore foundations, syntax rules & environment setup for " + taskDescription, "HIGH", 2));
+            subtasks.add(createSynthesizedSubtask("Hands-on drills, problem sets & core patterns for " + taskDescription, "HIGH", 3));
+            subtasks.add(createSynthesizedSubtask("Review edge cases, error handling & documentation for " + taskDescription, "MEDIUM", 1));
+        } else if (lower.contains("build") || lower.contains("implement") || lower.contains("project") || lower.contains("develop")) {
+            subtasks.add(createSynthesizedSubtask("Architect component interfaces & data contracts for " + taskDescription, "HIGH", 2));
+            subtasks.add(createSynthesizedSubtask("Construct core implementation & feature logic for " + taskDescription, "HIGH", 4));
+            subtasks.add(createSynthesizedSubtask("Write automated tests, refactor modules & verify " + taskDescription, "MEDIUM", 2));
+        } else if (lower.contains("test") || lower.contains("revise") || lower.contains("review") || lower.contains("audit")) {
+            subtasks.add(createSynthesizedSubtask("Conduct systematic validation & defect identification for " + taskDescription, "HIGH", 2));
+            subtasks.add(createSynthesizedSubtask("Apply fixes, benchmark performance & polish deliverables for " + taskDescription, "MEDIUM", 1));
+        } else {
+            subtasks.add(createSynthesizedSubtask("Analyze requirements, scope & prerequisite setup for " + taskDescription, "HIGH", 1));
+            subtasks.add(createSynthesizedSubtask("Execute primary milestones & core deliverables for " + taskDescription, "HIGH", 3));
+            subtasks.add(createSynthesizedSubtask("Validate outcomes, address blockers & document results for " + taskDescription, "MEDIUM", 1));
+        }
+        return subtasks;
+    }
+
+    private RuleTask createSynthesizedSubtask(String description, String priority, int estimatedDays) {
+        RuleTask t = new RuleTask();
+        t.description = description;
+        t.priority = priority;
+        t.estimatedDays = estimatedDays;
+        t.subtasks = new ArrayList<>();
+        return t;
     }
 
     /**

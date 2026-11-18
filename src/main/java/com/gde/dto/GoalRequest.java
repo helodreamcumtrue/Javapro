@@ -14,6 +14,9 @@ public class GoalRequest {
     /** easy | medium | hard  (defaults to "medium" if omitted) */
     private String difficulty = "medium";
 
+    /** standard | in-depth (defaults to "in-depth" if omitted) */
+    private String depth = "in-depth";
+
     public GoalRequest() {
     }
 
@@ -31,5 +34,13 @@ public class GoalRequest {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getDepth() {
+        return depth;
+    }
+
+    public void setDepth(String depth) {
+        this.depth = depth;
     }
 }

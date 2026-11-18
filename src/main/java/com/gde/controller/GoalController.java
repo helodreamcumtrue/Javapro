@@ -30,7 +30,11 @@ public class GoalController {
 
     @PostMapping({"/goal", "/api/goal"})
     public ResponseEntity<GoalResponse> submitGoal(@Valid @RequestBody GoalRequest request) {
-        GoalResponse response = goalService.createGoalAndDecompose(request.getTitle(), request.getDifficulty());
+        GoalResponse response = goalService.createGoalAndDecompose(
+                request.getTitle(),
+                request.getDifficulty(),
+                request.getDepth()
+        );
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

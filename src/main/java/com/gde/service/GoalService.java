@@ -36,14 +36,22 @@ public class GoalService {
      */
     @Transactional
     public GoalResponse createGoalAndDecompose(String title, String difficulty) {
+        return createGoalAndDecompose(title, difficulty, "in-depth");
+    }
+
+    @Transactional
+    public GoalResponse createGoalAndDecompose(String title, String difficulty, String depth) {
         if (difficulty == null || difficulty.isBlank()) {
             difficulty = "medium";
         }
+        if (depth == null || depth.isBlank()) {
+            depth = "in-depth";
+        }
 
-        DecompositionService.DecompositionPlan plan = decompositionService.decomposePlan(title, difficulty);
+        DecompositionService.DecompositionPlan plan = decompositionService.decomposePlan(title, difficulty, depth);
 
         Goal goal = new Goal(title.trim(), difficulty.toLowerCase(Locale.ROOT),
-                plan.matchType, plan.matchedKeyword, plan.explanation);
+                plan.matchType, plan.matchedKeyword, plan.explanation, plan.depth);
         goal = goalRepository.save(goal);
 
         // Persist top-down so children can reference the real (saved) parent id,
@@ -91,10 +99,16 @@ public class GoalService {
 
         int totalTasks = flatTasks.size();
         int completedTasks = (int) flatTasks.stream().filter(Task::isCompleted).count();
+        int totalPhases = (int) flatTasks.stream().filter(t -> t.getParentId() == null).count();
+        int totalSubtasks = totalTasks - totalPhases;
 
-        return new GoalResponse(goal.getId(), goal.getTitle(), goal.getDifficulty(),
+        GoalResponse response = new GoalResponse(goal.getId(), goal.getTitle(), goal.getDifficulty(),
                 goal.getCreatedAt(), totalDays, totalTasks, completedTasks,
-                goal.getMatchType(), goal.getMatchedKeyword(), goal.getExplanation(), tree);
+                goal.getMatchType(), goal.getMatchedKeyword(), goal.getExplanation(),
+                goal.getDepth() != null ? goal.getDepth() : "in-depth", tree);
+        response.setTotalPhaseCount(totalPhases);
+        response.setTotalSubtaskCount(totalSubtasks);
+        return response;
     }
 
     @Transactional

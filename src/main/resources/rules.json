@@ -3,200 +3,1086 @@
     {
       "keywords": ["ai study planner", "study planner", "study plan"],
       "tasks": [
-        { "description": "Define core learning roadmap & milestone criteria", "priority": "HIGH", "estimatedDays": 3 },
+        {
+          "description": "Phase 1: Define core learning roadmap & milestone criteria",
+          "priority": "HIGH",
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Formulate student persona, skill prerequisites & target outcomes", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Design modular syllabus breakdown with weekly milestone targets", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Establish quantitative progress tracking rubrics and completion metrics", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
         { 
-          "description": "Develop AI recommendation pipeline & prompt engine", 
+          "description": "Phase 2: Develop AI recommendation pipeline & prompt engine", 
           "priority": "HIGH", 
           "estimatedDays": 6,
           "subtasks": [
-            { "description": "Build LLM study schedule generation prompts", "priority": "HIGH", "estimatedDays": 2 },
-            { "description": "Configure deterministic fallback heuristics", "priority": "MEDIUM", "estimatedDays": 2 },
-            { "description": "Evaluate response latency & memory usage", "priority": "LOW", "estimatedDays": 2 }
+            { "description": "Build few-shot LLM study schedule generation prompt templates", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Configure deterministic fallback heuristics for zero-latency offline mode", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Benchmark response latency, token consumption & memory efficiency", "priority": "MEDIUM", "estimatedDays": 2 }
           ]
         },
         { 
-          "description": "Implement collaborative builder dashboard & UX", 
+          "description": "Phase 3: Implement collaborative builder dashboard & UX", 
           "priority": "MEDIUM", 
           "estimatedDays": 8,
           "subtasks": [
-            { "description": "UX research & wireframe milestone tracker", "priority": "MEDIUM", "estimatedDays": 3 },
-            { "description": "Integrate real-time builder collaboration signals", "priority": "MEDIUM", "estimatedDays": 3 },
-            { "description": "Design interactive study calendar & task checklist", "priority": "LOW", "estimatedDays": 2 }
+            { "description": "Design interactive study calendar, kanban sprint & task checklist", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Implement real-time builder collaboration signals & websocket updates", "priority": "MEDIUM", "estimatedDays": 3 },
+            { "description": "Conduct accessibility (a11y) review & dark-mode responsive styling", "priority": "LOW", "estimatedDays": 2 }
           ]
         },
-        { "description": "ML integration for adaptive progress calibration", "priority": "MEDIUM", "estimatedDays": 5 },
-        { "description": "Deploy MVP and collect student feedback", "priority": "LOW", "estimatedDays": 4 }
+        { 
+          "description": "Phase 4: ML integration for adaptive progress calibration", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Collect user task completion velocity and adherence telemetry", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Train linear regression model to predict deadline slippage & burn-down", "priority": "MEDIUM", "estimatedDays": 2 },
+            { "description": "Build dynamic notification reminders & automated workload rebalancer", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 5: Deploy MVP and collect student feedback", 
+          "priority": "LOW", 
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Containerize backend service with Docker & deploy to staging cluster", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Run automated smoke tests & end-to-end user journey validations", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Distribute beta to 25 student testers and analyze UX feedback surveys", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["web development", "web dev", "website development"],
+      "keywords": ["web development", "web dev", "website development", "full stack", "frontend"],
       "tasks": [
-        { "description": "Learn HTML", "priority": "HIGH", "estimatedDays": 4 },
-        { "description": "Learn CSS", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Learn JavaScript", "priority": "HIGH", "estimatedDays": 10 },
+        { 
+          "description": "Learn HTML", 
+          "priority": "HIGH", 
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Master document structure, head metadata, and HTML5 semantic tags", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Build accessible forms with client-side validation attributes", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Embed audio, video, SVG graphics, and responsive picture elements", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Implement Web Accessibility standards (ARIA roles, keyboard nav, screen readers)", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn CSS", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Master Box Model, margin collapse, sizing units (rem, em, vh/vw, ch)", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Master Flexbox alignment, wrapping, flex-grow/shrink dynamics", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Master CSS Grid layout, template areas, auto-fit/auto-fill", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Build mobile-first responsive media queries and fluid typography", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Implement CSS variables, transitions, transforms & keyframe animations", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn JavaScript", 
+          "priority": "HIGH", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Core syntax, variables (let/const), primitive data types & type coercion", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "DOM selection, manipulation, event delegation & event bubbling", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Modern ES6+ features (destructuring, spread/rest, arrow functions, template literals)", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Asynchronous JS: Event Loop, Promises, async/await, and Fetch API calls", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Browser storage APIs (localStorage, sessionStorage) and JSON serialization", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
         {
           "description": "Build Projects",
           "priority": "MEDIUM",
           "estimatedDays": 14,
           "subtasks": [
-            { "description": "Build a static portfolio website", "priority": "MEDIUM", "estimatedDays": 5 },
-            { "description": "Build a to-do list web app", "priority": "MEDIUM", "estimatedDays": 5 },
-            { "description": "Build a responsive landing page", "priority": "LOW", "estimatedDays": 4 }
+            { "description": "Build a static portfolio website with responsive design and theme toggle", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Build an interactive to-do list web app with local storage persistence", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Build a weather forecast app consuming external REST APIs via fetch", "priority": "MEDIUM", "estimatedDays": 3 },
+            { "description": "Build a responsive product landing page with CSS grid and animations", "priority": "LOW", "estimatedDays": 3 }
           ]
         },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Perform cross-browser compatibility testing and responsive mobile audits", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Run Google Chrome Lighthouse audit for SEO, Performance, and Accessibility", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Deploy projects live to GitHub Pages, Netlify, or Vercel with custom domain", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["python"],
+      "keywords": ["python", "python programming", "learn python"],
       "tasks": [
-        { "description": "Learn Python syntax and basics", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Learn data structures (lists, dicts, sets, tuples)", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Learn functions and OOP in Python", "priority": "HIGH", "estimatedDays": 6 },
-        { "description": "Learn Python libraries (NumPy/Pandas basics)", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Build small Python projects", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+        { 
+          "description": "Learn Python syntax and basics", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Install Python 3, set up VS Code/IDE, and configure virtual environments (venv)", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Master variables, dynamic typing, primitive data types (int, float, str, bool)", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Understand operators, expressions, f-strings, and console input/output", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Implement control flow with if/elif/else statements and boolean logic", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Master loops (for, while, range, enumerate, break, continue)", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn data structures (lists, dicts, sets, tuples)", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Lists: indexing, slicing, methods (append, pop, sort), and list comprehensions", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Dictionaries: key-value storage, dictionary comprehensions, and lookup efficiency", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Tuples and Sets: immutability, uniqueness, set operations (union, intersection)", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Nested data structures, deep copying, and structured unpacking", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn functions and OOP in Python", 
+          "priority": "HIGH", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Function definitions, default arguments, return values, *args, and **kwargs", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Variable scope, closures, lambda expressions, and higher-order functions", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Classes, constructors (__init__), instance methods, and class attributes", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Object-Oriented principles: inheritance, polymorphism, and dunder/magic methods", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Exception handling with try/except/finally and creating custom exceptions", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn Python libraries (NumPy/Pandas basics)", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Package management with pip, requirements.txt, and modern uv/poetry overview", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "File I/O: reading and writing text, CSV, and JSON files with context managers", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "NumPy arrays, vectorized operations, slicing, and broadcasting basics", "priority": "MEDIUM", "estimatedDays": 2 },
+            { "description": "Pandas Series & DataFrames: loading, filtering, grouping, and transforming data", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Build small Python projects", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Build a command-line automated file organizer and expense logger", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Build an automated web scraping tool using requests and BeautifulSoup", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Build a lightweight REST API service using FastAPI or Flask", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Write automated unit tests using pytest and verify code coverage", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Format code with Black, check types with mypy, and follow PEP 8 style", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Publish project to GitHub with README documentation and license", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["java programming", "java language", "learn java"],
+      "keywords": ["java programming", "java language", "learn java", "java developer"],
       "tasks": [
-        { "description": "Learn Java syntax and basics", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Learn OOP concepts in Java", "priority": "HIGH", "estimatedDays": 6 },
-        { "description": "Learn Collections framework", "priority": "MEDIUM", "estimatedDays": 5 },
-        { "description": "Learn Exception Handling and File I/O", "priority": "MEDIUM", "estimatedDays": 4 },
-        { "description": "Build small Java projects", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+        { 
+          "description": "Learn Java syntax and basics", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Install JDK 17/21, set JAVA_HOME, and configure IntelliJ IDEA or VS Code", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Understand JVM, JRE, bytecode compilation, and class execution model", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Master primitive types, variables, type casting, operators, and control flow", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Work with Strings, StringBuilder, arrays, and standard input with Scanner", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn OOP concepts in Java", 
+          "priority": "HIGH", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Classes, objects, constructors, field encapsulation, and access modifiers", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Inheritance (extends), method overriding, and super keyword", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Polymorphism, abstract classes, and interface contracts (implements)", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Static fields/methods, final keyword, and immutable Records", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn Collections framework", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "List interface: ArrayList vs LinkedList performance and methods", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Set interface: HashSet, LinkedHashSet, TreeSet and hashCode/equals contracts", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Map interface: HashMap, TreeMap, key-value iteration, and collisions", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Generics, type safety, Comparable vs Comparator sorting", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Java Streams API: filter, map, collect, reduce, and lambda expressions", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn Exception Handling and File I/O", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Checked vs unchecked exceptions, try-catch-finally, and multi-catch", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Try-with-resources statement and custom domain exceptions", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Modern file I/O with java.nio.file.Files and Path operations", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "JSON serialization and deserialization using Jackson ObjectMapper", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Build small Java projects", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Build an in-memory Console Banking or Inventory Management System", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Create a multi-threaded web scraper or log file analyzer", "priority": "MEDIUM", "estimatedDays": 3 },
+            { "description": "Build a Spring Boot 3 REST API microservice with SQLite/H2 persistence", "priority": "HIGH", "estimatedDays": 4 }
+          ]
+        },
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Write comprehensive unit tests with JUnit 5 and Mockito mocking", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Review Maven build lifecycle (pom.xml, clean, compile, test, package)", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Package executable JAR and push repository to GitHub", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "keywords": ["dsa", "data structures and algorithms", "leetcode", "competitive programming", "algorithms"],
+      "tasks": [
+        {
+          "description": "Phase 1: Foundations & Algorithmic Complexity",
+          "priority": "HIGH",
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Master Big-O notation: time complexity, auxiliary space, and recursion stacks", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Memory models: arrays vs pointers, memory locality, and cache hits", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Solve 15 warm-up algorithmic puzzles focused on math and bit manipulation", "priority": "HIGH", "estimatedDays": 2 }
+          ]
+        },
+        {
+          "description": "Phase 2: Linear Data Structures & Pointer Patterns",
+          "priority": "HIGH",
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Two-Pointer techniques: opposite-end, fast & slow pointers, cycle detection", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Sliding Window pattern: fixed-size and dynamic-size subarray problems", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Prefix Sum and Hash Map frequency counting patterns", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Monotonic Stacks and Queues for next-greater-element problems", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        {
+          "description": "Phase 3: Trees, Heaps & Binary Search",
+          "priority": "HIGH",
+          "estimatedDays": 12,
+          "subtasks": [
+            { "description": "Binary Search on sorted arrays and search space optimization", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Binary Trees: Preorder, Inorder, Postorder, and Level-Order traversals", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Binary Search Trees (BST): insertion, deletion, validation, and LCA", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Min/Max Priority Queues & Heaps for Top-K and merge operations", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        {
+          "description": "Phase 4: Graphs & Search Algorithms",
+          "priority": "HIGH",
+          "estimatedDays": 12,
+          "subtasks": [
+            { "description": "Graph representations (Adjacency Matrix vs List) and BFS/DFS traversals", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Connected components, island matrix traversals, and flood fill", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Topological Sort (Kahn's Algorithm) for task dependency scheduling", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Shortest Path algorithms: Dijkstra and Disjoint Set Union (Union-Find)", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        {
+          "description": "Phase 5: Dynamic Programming & Backtracking",
+          "priority": "MEDIUM",
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Backtracking: permutations, combinations, subsets, and constraint satisfaction", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "1D Dynamic Programming: Fibonacci, climbing stairs, house robber, coin change", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "2D Dynamic Programming: Longest Common Subsequence, Edit Distance, Grid paths", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Space optimization techniques from O(N) to O(1) states", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        {
+          "description": "Phase 6: Timed Mock Interviews & Contest Drills",
+          "priority": "LOW",
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Participate in 3 timed coding contests simulating interview conditions", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Maintain a personal error workbook reviewing all failed problem attempts", "priority": "MEDIUM", "estimatedDays": 2 },
+            { "description": "Practice verbalizing thought process and edge case analysis out loud", "priority": "LOW", "estimatedDays": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "keywords": ["system design", "distributed systems", "software architecture"],
+      "tasks": [
+        {
+          "description": "Phase 1: Foundations & Back-of-the-Envelope Estimation",
+          "priority": "HIGH",
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Map functional vs non-functional requirements and define service level objectives", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Calculate throughput (QPS), bandwidth, storage, and memory capacity requirements", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Understand CAP theorem, PACELC theorem, and latency numbers every engineer should know", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        {
+          "description": "Phase 2: Networking, Load Balancing & Caching",
+          "priority": "HIGH",
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "DNS resolution, HTTP/HTTPS protocols, WebSockets, gRPC, and reverse proxies", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Load balancing algorithms (Round Robin, Least Connections, Consistent Hashing)", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Caching strategies: Cache-Aside, Write-Through, Write-Behind, Redis, and CDN edges", "priority": "HIGH", "estimatedDays": 2 }
+          ]
+        },
+        {
+          "description": "Phase 3: Database Scaling, Replication & Partitioning",
+          "priority": "HIGH",
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "SQL vs NoSQL trade-offs, ACID transactions vs BASE consistency models", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Database replication (Master-Slave, Multi-Master) and read replica routing", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Horizontal sharding strategies, shard keys, and re-sharding challenges", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        {
+          "description": "Phase 4: Asynchronous Processing & Messaging Queues",
+          "priority": "MEDIUM",
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Message brokers vs event streaming: RabbitMQ vs Apache Kafka architectures", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Consumer groups, partition offsets, dead-letter queues, and idempotency", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Batch processing pipelines and event-driven microservices orchestration", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        {
+          "description": "Phase 5: Case Study Implementations & System Blueprints",
+          "priority": "MEDIUM",
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Design a URL Shortener service (e.g. TinyURL) with high read availability", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Design a Distributed Rate Limiter using Token Bucket and Redis scripts", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Design a Real-time Chat & Notification System with WebSockets and Pub/Sub", "priority": "MEDIUM", "estimatedDays": 4 }
+          ]
+        },
+        {
+          "description": "Phase 6: Reliability, Monitoring & Failure Modes",
+          "priority": "LOW",
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Circuit breaker patterns, exponential backoff with jitter, and rate limiting", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Observability: structured logs, distributed tracing, and metric alerts", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        }
       ]
     },
     {
       "keywords": ["data science"],
       "tasks": [
-        { "description": "Learn Python for Data Science", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn Statistics and Probability basics", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn Pandas and NumPy", "priority": "HIGH", "estimatedDays": 6 },
-        { "description": "Learn Data Visualization (Matplotlib/Seaborn)", "priority": "MEDIUM", "estimatedDays": 5 },
-        { "description": "Learn basic Machine Learning concepts", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Work on a Data Science mini project", "priority": "MEDIUM", "estimatedDays": 8 },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+        { 
+          "description": "Learn Python for Data Science", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Set up JupyterLab/Notebooks environment and essential data science libraries", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Vectorized computations, multidimensional arrays, and broadcasting with NumPy", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Data wrangling with Pandas: filtering, grouping, merging, and pivot tables", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn Statistics and Probability basics", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Descriptive statistics: mean, median, variance, standard deviation, and percentiles", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Probability distributions: Normal, Binomial, Poisson, and Central Limit Theorem", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Inferential statistics: hypothesis testing, p-values, t-tests, and confidence intervals", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn Data Cleaning and Feature Engineering", 
+          "priority": "HIGH", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Handle missing values, imputations, duplicate rows, and outlier detection", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Feature scaling: MinMax normalization, Standard z-score standardization", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Categorical encoding: One-Hot, Ordinal, and Target encoding techniques", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn Data Visualization (Matplotlib/Seaborn)", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Plot histograms, boxplots, and violin plots to analyze distributions", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Create correlation heatmaps, pairplots, and scatter matrices", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Export publication-quality charts and interactive HTML dashboards", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn basic Machine Learning concepts", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Supervised learning: Linear Regression, Logistic Regression, Decision Trees", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Train-test splitting, K-fold cross-validation, and bias-variance trade-off", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Evaluation metrics: MSE/RMSE, Accuracy, Precision, Recall, F1, ROC-AUC", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Work on a Data Science mini project", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 8,
+          "subtasks": [
+            { "description": "Acquire public dataset (Kaggle/government) and define business questions", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Execute Exploratory Data Analysis (EDA) notebook with visual insights", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Train predictive model, interpret feature importances, and present findings", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Document methodology, clean up code repository, and publish on GitHub/Kaggle", "priority": "LOW", "estimatedDays": 3 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["machine learning", "ml"],
+      "keywords": ["machine learning", "ml", "artificial intelligence", "deep learning"],
       "tasks": [
-        { "description": "Revise Python and Math foundations (linear algebra, calculus, probability)", "priority": "HIGH", "estimatedDays": 10 },
-        { "description": "Learn core ML algorithms (regression, classification, clustering)", "priority": "HIGH", "estimatedDays": 14 },
-        { "description": "Learn a ML library (scikit-learn)", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn model evaluation and tuning", "priority": "MEDIUM", "estimatedDays": 5 },
-        { "description": "Build an end-to-end ML mini project", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 4 }
+        { 
+          "description": "Revise Python and Math foundations (linear algebra, calculus, probability)", 
+          "priority": "HIGH", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Linear Algebra: vectors, matrices, dot products, eigenvalues, and eigenvectors", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Multivariate Calculus: partial derivatives, gradients, and gradient descent optimization", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Probability & Statistics: Bayes theorem, distributions, maximum likelihood estimation", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn core ML algorithms (regression, classification, clustering)", 
+          "priority": "HIGH", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Linear and Polynomial Regression with L1 (Lasso) and L2 (Ridge) regularization", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Classification: Logistic Regression, Support Vector Machines (SVM), and Naive Bayes", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Ensemble methods: Random Forests, AdaBoost, and Gradient Boosting (XGBoost/LightGBM)", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Unsupervised learning: K-Means clustering, Hierarchical clustering, and PCA dimensionality reduction", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn a ML library (scikit-learn)", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Build automated scikit-learn Pipeline and ColumnTransformer workflows", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Hyperparameter tuning using GridSearchCV and RandomizedSearchCV", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Model persistence: serialize trained estimators using joblib and ONNX", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn model evaluation and tuning", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Confusion matrices, precision-recall trade-offs, and ROC curves", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Handle class imbalance with SMOTE oversampling and cost-sensitive loss", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Model explainability: calculate SHAP values and feature attribution", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Build an end-to-end ML mini project", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Prepare dataset, perform feature engineering, and train candidate models", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Build an inference REST API microservice with FastAPI or Flask", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Containerize model service with Docker and deploy to cloud endpoint", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Draft comprehensive technical report and publish GitHub repository", "priority": "LOW", "estimatedDays": 4 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["app development", "android app", "mobile app"],
+      "keywords": ["app development", "android app", "mobile app", "ios app", "flutter", "react native"],
       "tasks": [
-        { "description": "Learn Kotlin/Java basics for Android", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn Android Studio and UI layouts (XML/Compose)", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn Activities, Fragments and Navigation", "priority": "MEDIUM", "estimatedDays": 6 },
-        { "description": "Learn local storage and APIs", "priority": "MEDIUM", "estimatedDays": 6 },
-        { "description": "Build a simple Android app", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 3 }
+        { 
+          "description": "Learn Kotlin/Java basics for Android", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Install Android Studio, Android SDKs, and configure Android Virtual Devices (AVD)", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Master Kotlin syntax: null safety, data classes, lambdas, and extension functions", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Understand Android project architecture (manifest, gradle scripts, resources)", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn Android Studio and UI layouts (XML/Compose)", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Build reactive UI with Jetpack Compose composables, modifiers, and state", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Design responsive screen layouts adhering to Material Design 3 guidelines", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn Activities, Fragments and Navigation", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Understand Activity and Composable lifecycle events and configuration changes", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Implement Jetpack Navigation component with typed route arguments and backstack", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Implement ViewModel architecture and StateFlow reactive state holders", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn local storage and APIs", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Local persistence: Room ORM database with SQLite DAOs and migrations", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "REST API networking: Retrofit, OkHttp client, and Kotlinx Serialization", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Build a simple Android app", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Build a Habits Tracker or Notes application with full offline-first Room persistence", "priority": "HIGH", "estimatedDays": 6 },
+            { "description": "Integrate camera/gallery permissions or push notifications", "priority": "MEDIUM", "estimatedDays": 4 }
+          ]
+        },
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Generate signed release APK/AAB bundle and audit Play Store release checklist", "priority": "LOW", "estimatedDays": 3 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["guitar"],
+      "keywords": ["guitar", "acoustic guitar", "electric guitar"],
       "tasks": [
-        { "description": "Learn guitar parts and basic posture", "priority": "HIGH", "estimatedDays": 2 },
-        { "description": "Learn basic open chords", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Practice chord transitions and strumming patterns", "priority": "HIGH", "estimatedDays": 10 },
-        { "description": "Learn to play simple songs", "priority": "MEDIUM", "estimatedDays": 14 },
-        { "description": "Learn basic music theory (scales)", "priority": "LOW", "estimatedDays": 7 },
-        { "description": "Practice regularly and refine technique", "priority": "LOW", "estimatedDays": 14 }
+        { 
+          "description": "Learn guitar parts and basic posture", 
+          "priority": "HIGH", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Learn guitar anatomy, fretboard layout, string numbering, and tuning (EADGBE)", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Establish correct sitting posture, thumb placement, and pick grip mechanics", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn basic open chords", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Master major open chords: C Major, G Major, D Major, E Major, A Major", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Master minor open chords: A Minor, E Minor, D Minor", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Practice chord transitions and strumming patterns", 
+          "priority": "HIGH", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Execute one-minute chord change drills with a steady metronome", "priority": "HIGH", "estimatedDays": 5 },
+            { "description": "Master 4/4 standard strumming patterns (Down, Down-Up, Up-Down-Up)", "priority": "HIGH", "estimatedDays": 5 }
+          ]
+        },
+        { 
+          "description": "Learn to play simple songs", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Learn first 3 full acoustic pop/rock songs using mastered chord progressions", "priority": "HIGH", "estimatedDays": 9 },
+            { "description": "Practice singing or humming along while maintaining steady strumming tempo", "priority": "MEDIUM", "estimatedDays": 5 }
+          ]
+        },
+        { 
+          "description": "Learn basic music theory (scales)", 
+          "priority": "LOW", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Learn Minor Pentatonic scale box 1 and practice alternate picking", "priority": "MEDIUM", "estimatedDays": 4 },
+            { "description": "Understand root notes, whole/half steps, and basic chord construction", "priority": "LOW", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Practice regularly and refine technique", 
+          "priority": "LOW", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Establish a structured 20-minute daily practice routine focusing on finger independence", "priority": "LOW", "estimatedDays": 14 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["fitness", "gym", "workout"],
+      "keywords": ["fitness", "gym", "workout", "bodybuilding", "weight loss"],
       "tasks": [
-        { "description": "Set a clear fitness goal and baseline measurements", "priority": "HIGH", "estimatedDays": 1 },
-        { "description": "Learn correct form for basic exercises", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Build a weekly workout schedule", "priority": "HIGH", "estimatedDays": 2 },
-        { "description": "Plan a balanced diet/nutrition routine", "priority": "MEDIUM", "estimatedDays": 3 },
-        { "description": "Track progress and adjust routine", "priority": "MEDIUM", "estimatedDays": 21 },
-        { "description": "Add variety (cardio, strength, flexibility)", "priority": "LOW", "estimatedDays": 14 }
+        { 
+          "description": "Set a clear fitness goal and baseline measurements", 
+          "priority": "HIGH", 
+          "estimatedDays": 1,
+          "subtasks": [
+            { "description": "Record baseline body weight, measurements, progress photos, and physical test limits", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Learn correct form for basic exercises", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Master barbell/dumbbell compound movement cues: Squat, Bench Press, Deadlift, Overhead Press", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Learn warm-up mobility drills and dynamic stretching routines to prevent injury", "priority": "HIGH", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Build a weekly workout schedule", 
+          "priority": "HIGH", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Design progressive overload routine (3-Day Full Body or 4-Day Upper/Lower split)", "priority": "HIGH", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Plan a balanced diet/nutrition routine", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Calculate Total Daily Energy Expenditure (TDEE) and target daily caloric intake", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Set daily macronutrient targets (protein, carbohydrates, healthy fats) and plan weekly meal prep", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Track progress and adjust routine", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 21,
+          "subtasks": [
+            { "description": "Log daily lifts, weights, repetitions, and caloric intake in a tracker app", "priority": "HIGH", "estimatedDays": 14 },
+            { "description": "Conduct weekly weight check-in and adjust training volume or calories based on rate of change", "priority": "MEDIUM", "estimatedDays": 7 }
+          ]
+        },
+        { 
+          "description": "Add variety (cardio, strength, flexibility)", 
+          "priority": "LOW", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Incorporate Zone 2 cardio and dedicated weekly mobility sessions for longevity", "priority": "LOW", "estimatedDays": 14 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["cooking", "cook"],
+      "keywords": ["cooking", "cook", "culinary"],
       "tasks": [
-        { "description": "Learn kitchen basics and knife skills", "priority": "HIGH", "estimatedDays": 3 },
-        { "description": "Learn basic cooking techniques (boiling, frying, baking)", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn to follow and adapt recipes", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Practice cooking simple daily meals", "priority": "MEDIUM", "estimatedDays": 14 },
-        { "description": "Try advanced/cuisine-specific recipes", "priority": "LOW", "estimatedDays": 14 }
+        { 
+          "description": "Learn kitchen basics and knife skills", 
+          "priority": "HIGH", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Master chef's knife grip (pinch grip) and claw hand positioning for safety", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Practice core vegetable cuts: julienne, brunoise, dice, and chiffonade", "priority": "HIGH", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn basic cooking techniques (boiling, frying, baking)", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Master heat control, oil temperature, and sautéing without overcrowding pan", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Understand the Maillard reaction, pan searing, deglazing, and pan sauces", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Learn roasting and oven temperature management for meats and vegetables", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn to follow and adapt recipes", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Master flavor balancing: seasoning with salt, acidity (lemon/vinegar), fat, and heat", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Stock essential pantry herbs, spices, oils, and aromatics (mirepoix/holy trinity)", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Practice cooking simple daily meals", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Cook 5 versatile weekday meals from scratch without relying on packaged mixes", "priority": "HIGH", "estimatedDays": 14 }
+          ]
+        },
+        { 
+          "description": "Try advanced/cuisine-specific recipes", 
+          "priority": "LOW", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Replicate authentic regional recipes and host a multi-course dinner", "priority": "LOW", "estimatedDays": 14 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["public speaking", "communication skills"],
+      "keywords": ["public speaking", "communication skills", "speech", "presentation"],
       "tasks": [
-        { "description": "Identify fear points and build confidence basics", "priority": "HIGH", "estimatedDays": 3 },
-        { "description": "Learn structuring a speech (intro-body-conclusion)", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Practice voice modulation and body language", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Practice speaking in front of small groups", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Record and review your own speeches", "priority": "LOW", "estimatedDays": 7 }
+        { 
+          "description": "Identify fear points and build confidence basics", 
+          "priority": "HIGH", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Pinpoint physical anxiety triggers and practice box-breathing calming routines", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Reframe audience perception: focus on delivering value rather than self-judgment", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn structuring a speech (intro-body-conclusion)", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Craft an attention-grabbing opening hook (story, provocative question, or striking stat)", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Structure the core body into 3 clear, evidence-backed narrative pillars", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Formulate a memorable conclusion with an unambiguous call to action", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Practice voice modulation and body language", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Master vocal pace, dynamic volume shifts, and the power of deliberate pauses", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Eliminate verbal crutches/filler words (um, ah, like) through silent pause replacement", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Practice purposeful stage movement, open gestures, and sustained eye contact", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Practice speaking in front of small groups", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Deliver 5-minute presentation to a study group, colleagues, or Toastmasters chapter", "priority": "HIGH", "estimatedDays": 6 },
+            { "description": "Conduct live Q&A session and practice thinking on your feet under pressure", "priority": "MEDIUM", "estimatedDays": 4 }
+          ]
+        },
+        { 
+          "description": "Record and review your own speeches", 
+          "priority": "LOW", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Record a full rehearsal on video and audit delivery against an objective rubric", "priority": "LOW", "estimatedDays": 7 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["digital marketing"],
+      "keywords": ["digital marketing", "seo", "social media marketing"],
       "tasks": [
-        { "description": "Learn digital marketing fundamentals", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Learn SEO basics", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn social media marketing", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Learn content marketing and copywriting", "priority": "MEDIUM", "estimatedDays": 6 },
-        { "description": "Run a small sample campaign", "priority": "LOW", "estimatedDays": 10 }
+        { 
+          "description": "Learn digital marketing fundamentals", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Define ideal customer personas, value propositions, and sales funnel stages", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Understand marketing metrics: CAC, LTV, ROAS, CTR, and Conversion Rates", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn SEO basics", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Keyword research: search intent, volume, keyword difficulty, and competitor analysis", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "On-page SEO: title tags, meta descriptions, heading hierarchy, and internal linking", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Technical SEO: site speed, mobile responsiveness, XML sitemaps, and robots.txt", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn social media marketing", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Build an editorial content calendar and design branded visual assets", "priority": "MEDIUM", "estimatedDays": 4 },
+            { "description": "Engage community audience, manage inbound comments, and establish brand voice", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn content marketing and copywriting", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 6,
+          "subtasks": [
+            { "description": "Master persuasive copywriting frameworks: AIDA, PAS (Problem-Agitate-Solve)", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Write high-converting landing page copy, email sequences, and lead magnets", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Run a small sample campaign", 
+          "priority": "LOW", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Set up a test campaign on Google Ads or Meta Ads with conversion tracking", "priority": "MEDIUM", "estimatedDays": 6 },
+            { "description": "Analyze campaign analytics dashboard, calculate ROAS, and optimize ad creative", "priority": "LOW", "estimatedDays": 4 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["exam", "test preparation", "entrance exam"],
+      "keywords": ["exam", "test preparation", "entrance exam", "upsc", "sat", "gre", "gmat"],
       "tasks": [
-        { "description": "Understand the exam syllabus and pattern", "priority": "HIGH", "estimatedDays": 2 },
-        { "description": "Collect study material and resources", "priority": "HIGH", "estimatedDays": 3 },
-        { "description": "Study core topics section-wise", "priority": "HIGH", "estimatedDays": 21 },
-        { "description": "Practice previous year papers", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Take timed mock tests", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Revise weak areas", "priority": "LOW", "estimatedDays": 5 }
+        { 
+          "description": "Understand the exam syllabus and pattern", 
+          "priority": "HIGH", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Deconstruct official syllabus into weighted subject modules and scoring rubrics", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Take a diagnostic baseline test to identify initial knowledge strengths and gaps", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Collect study material and resources", 
+          "priority": "HIGH", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Curate standard reference textbooks, video lecture series, and formula sheets", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Set up spaced repetition flashcard system (Anki) for high-yield facts and formulas", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Study core topics section-wise", 
+          "priority": "HIGH", 
+          "estimatedDays": 21,
+          "subtasks": [
+            { "description": "Execute active recall study blocks covering all high-weightage chapters", "priority": "HIGH", "estimatedDays": 12 },
+            { "description": "Solve topic-wise problem sets immediately after studying each theoretical chapter", "priority": "HIGH", "estimatedDays": 9 }
+          ]
+        },
+        { 
+          "description": "Practice previous year papers", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Solve the past 5 to 10 years of official exam question papers under untimed conditions", "priority": "HIGH", "estimatedDays": 6 },
+            { "description": "Maintain an Error Log dissecting conceptual mistakes vs careless errors", "priority": "MEDIUM", "estimatedDays": 4 }
+          ]
+        },
+        { 
+          "description": "Take timed mock tests", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Take 4 full-length timed mock exams strictly adhering to real exam test conditions", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Refine question-selection strategy and time allocation per exam section", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Revise weak areas", 
+          "priority": "LOW", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Review summary formula sheets and re-test high-error question categories", "priority": "LOW", "estimatedDays": 5 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["startup", "business", "launch a company"],
+      "keywords": ["startup", "business", "launch a company", "entrepreneurship"],
       "tasks": [
-        { "description": "Validate the business idea and target market", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Create a business plan", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Build a Minimum Viable Product (MVP)", "priority": "HIGH", "estimatedDays": 21 },
-        { "description": "Test MVP with early users and gather feedback", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Plan funding/finances", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Launch and market the product", "priority": "LOW", "estimatedDays": 14 }
+        { 
+          "description": "Validate the business idea and target market", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Draft Lean Canvas articulating value proposition, unfair advantage, and cost structure", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Conduct 15 customer discovery interviews using The Mom Test principles", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Analyze competitor landscape, pricing benchmarks, and market defensibility", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Create a business plan", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Model financial unit economics: projected CAC, LTV, gross margins, and burn rate", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Define go-to-market distribution channels and initial user acquisition strategy", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Build a Minimum Viable Product (MVP)", 
+          "priority": "HIGH", 
+          "estimatedDays": 21,
+          "subtasks": [
+            { "description": "Define minimum viable scope focusing exclusively on solving the single primary pain point", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Build functional MVP prototype using no-code tools or modern lightweight stack", "priority": "HIGH", "estimatedDays": 14 },
+            { "description": "Set up conversion-focused landing page with waitlist capture and value proposition", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Test MVP with early users and gather feedback", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Onboard first 20 beta users and observe user journeys via session recordings", "priority": "HIGH", "estimatedDays": 5 },
+            { "description": "Synthesize user feedback into priority feature backlog and bug remediation list", "priority": "MEDIUM", "estimatedDays": 5 }
+          ]
+        },
+        { 
+          "description": "Plan funding/finances", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Prepare 10-slide investor pitch deck and financial projection model", "priority": "MEDIUM", "estimatedDays": 4 },
+            { "description": "Evaluate bootstrapping vs angel investment vs venture capital pathways", "priority": "LOW", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Launch and market the product", 
+          "priority": "LOW", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Execute public launch campaign across Product Hunt, Hacker News, and social media", "priority": "HIGH", "estimatedDays": 7 },
+            { "description": "Establish customer support feedback loops and monitor retention cohort curves", "priority": "LOW", "estimatedDays": 7 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["book", "write a novel", "writing a book"],
+      "keywords": ["book", "write a novel", "writing a book", "author"],
       "tasks": [
-        { "description": "Brainstorm and finalize the core idea/plot", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Create an outline and chapter structure", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Write the first draft", "priority": "HIGH", "estimatedDays": 30 },
-        { "description": "Edit and revise the manuscript", "priority": "MEDIUM", "estimatedDays": 14 },
-        { "description": "Get feedback from readers/editors", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Finalize and publish/submit", "priority": "LOW", "estimatedDays": 7 }
+        { 
+          "description": "Brainstorm and finalize the core idea/plot", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Draft central premise, theme, target genre, and core narrative hook", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Create detailed character dossiers with internal motivations, flaws, and backstories", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Create an outline and chapter structure", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Map Three-Act Story Structure: inciting incident, midpoint reversal, and climax", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Write scene-by-scene beat sheet outlining conflict and resolution for every chapter", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Write the first draft", 
+          "priority": "HIGH", 
+          "estimatedDays": 30,
+          "subtasks": [
+            { "description": "Establish daily writing discipline targeting 1,000 words per day without self-editing", "priority": "HIGH", "estimatedDays": 24 },
+            { "description": "Complete rough draft manuscript reaching target word count", "priority": "HIGH", "estimatedDays": 6 }
+          ]
+        },
+        { 
+          "description": "Edit and revise the manuscript", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Developmental edit: address plot holes, character arc inconsistencies, and pacing", "priority": "HIGH", "estimatedDays": 8 },
+            { "description": "Line edit: refine prose rhythm, eliminate filter words, and enhance dialogue voice", "priority": "MEDIUM", "estimatedDays": 6 }
+          ]
+        },
+        { 
+          "description": "Get feedback from readers/editors", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Distribute draft to 3 trusted beta readers and compile structured feedback notes", "priority": "MEDIUM", "estimatedDays": 7 }
+          ]
+        },
+        { 
+          "description": "Finalize and publish/submit", 
+          "priority": "LOW", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Perform final proofread and format manuscript for publishing or query submission", "priority": "LOW", "estimatedDays": 7 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["language", "spanish", "french", "german", "japanese", "new language"],
+      "keywords": ["language", "spanish", "french", "german", "japanese", "new language", "mandarin"],
       "tasks": [
-        { "description": "Learn the alphabet/script and pronunciation", "priority": "HIGH", "estimatedDays": 5 },
-        { "description": "Learn basic vocabulary and greetings", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Learn basic grammar rules", "priority": "HIGH", "estimatedDays": 10 },
-        { "description": "Practice listening and speaking daily", "priority": "MEDIUM", "estimatedDays": 21 },
-        { "description": "Practice conversations with native speakers", "priority": "MEDIUM", "estimatedDays": 14 },
-        { "description": "Revise Concepts", "priority": "LOW", "estimatedDays": 5 }
+        { 
+          "description": "Learn the alphabet/script and pronunciation", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Master phonetic sound system, unique vowels/consonants, and mouth positioning", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Learn alphabet or character stroke orders and listen to native audio clips", "priority": "HIGH", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Learn basic vocabulary and greetings", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Learn top 250 high-frequency words using spaced repetition flashcards (Anki)", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Master essential survival phrases, numbers, days, greetings, and introductions", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Learn basic grammar rules", 
+          "priority": "HIGH", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Understand core sentence order (Subject-Verb-Object) and noun genders/articles", "priority": "HIGH", "estimatedDays": 5 },
+            { "description": "Master present tense regular and essential irregular verb conjugations", "priority": "HIGH", "estimatedDays": 5 }
+          ]
+        },
+        { 
+          "description": "Practice listening and speaking daily", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 21,
+          "subtasks": [
+            { "description": "Immerse with 30 minutes daily of comprehensible input podcasts and subtitled videos", "priority": "HIGH", "estimatedDays": 14 },
+            { "description": "Practice shadow-speaking and recording pronunciation self-evaluations", "priority": "MEDIUM", "estimatedDays": 7 }
+          ]
+        },
+        { 
+          "description": "Practice conversations with native speakers", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Conduct weekly 30-minute language exchange sessions with a native speaking partner", "priority": "HIGH", "estimatedDays": 14 }
+          ]
+        },
+        { 
+          "description": "Revise Concepts", 
+          "priority": "LOW", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Read graded beginner readers and review grammatical weak spots in flashcards", "priority": "LOW", "estimatedDays": 5 }
+          ]
+        }
       ]
     }
   ],
@@ -205,61 +1091,316 @@
     {
       "keywords": ["learn", "master", "study"],
       "tasks": [
-        { "description": "Understand the basics of {topic}", "priority": "HIGH", "estimatedDays": 4 },
-        { "description": "Study core concepts of {topic}", "priority": "HIGH", "estimatedDays": 7 },
-        { "description": "Practice {topic} through exercises", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Build a small project using {topic}", "priority": "MEDIUM", "estimatedDays": 10 },
-        { "description": "Revise and test your knowledge of {topic}", "priority": "LOW", "estimatedDays": 3 }
+        { 
+          "description": "Phase 1: Foundational Theory & Environment Setup for {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Research fundamental ecosystem, mental models, and prerequisite terminology for {topic}", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Install required toolchains, configure IDE/editor environments, and verify tool versioning", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Curate official documentation, cheat sheets, and authoritative reference material", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 2: Core Concepts & Principles of {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Study core concepts, standard patterns, and architectural conventions of {topic}", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Complete targeted exercises and problem sets to reinforce comprehension of {topic}", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Document common pitfalls, debugging tips, and anti-patterns encountered in {topic}", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 3: Applied Practice & Intermediate Exercises with {topic}", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Build modular intermediate components and practical utility scripts with {topic}", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Integrate third-party libraries, toolkits, and external ecosystem tools with {topic}", "priority": "MEDIUM", "estimatedDays": 2 },
+            { "description": "Implement error handling, edge case verification, and defensive practices for {topic}", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Phase 4: Build a Hands-on Capstone Project using {topic}", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Define scope, technical architecture, and milestones for a standalone project in {topic}", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Implement core features end-to-end, connecting data layers and user interactions", "priority": "HIGH", "estimatedDays": 5 },
+            { "description": "Write automated unit tests and perform code clean-up and modular refactoring", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Phase 5: Revise and Test Your Knowledge of {topic}", 
+          "priority": "LOW", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Conduct thorough performance review, profiling, and benchmarking of {topic} implementation", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Complete comprehensive knowledge self-assessment or mock technical evaluation", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Document lessons learned and package project artifacts for presentation or deployment", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["build", "create", "develop", "make"],
+      "keywords": ["build", "create", "develop", "make", "construct"],
       "tasks": [
-        { "description": "Plan and design {topic}", "priority": "HIGH", "estimatedDays": 3 },
-        { "description": "Set up tools/environment for {topic}", "priority": "HIGH", "estimatedDays": 2 },
-        { "description": "Implement core features of {topic}", "priority": "HIGH", "estimatedDays": 10 },
-        { "description": "Test {topic} thoroughly", "priority": "MEDIUM", "estimatedDays": 4 },
-        { "description": "Deploy / finalize {topic}", "priority": "LOW", "estimatedDays": 2 }
+        { 
+          "description": "Phase 1: Architecture, Requirements & Scope for {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Define functional requirements, user stories, and acceptance criteria for {topic}", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Design system architecture, component boundaries, and data schema models", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Select technical stack, evaluate third-party dependencies, and audit feasibility", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 2: Environment Configuration & Tooling Pipeline for {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Initialize version-controlled repository with standard branch protections and linters", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Install compiler/runtime, configure build scripts, and set up local development server", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 3: Implement Core Features of {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 10,
+          "subtasks": [
+            { "description": "Build foundational data persistence models and storage layer for {topic}", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Implement core business logic, service layers, and core algorithms for {topic}", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Build user interface or API controllers and wire input validation handlers", "priority": "HIGH", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Phase 4: Test and Verify {topic} Thoroughly", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 4,
+          "subtasks": [
+            { "description": "Write automated unit tests for business logic and edge case failure modes", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Perform end-to-end integration testing and user journey validation for {topic}", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Phase 5: Deploy, Finalize and Document {topic}", 
+          "priority": "LOW", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Package production artifacts with containerization or optimization bundling", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Publish complete technical documentation, runbook instructions, and release notes", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["prepare", "crack", "clear"],
+      "keywords": ["prepare", "crack", "clear", "pass"],
       "tasks": [
-        { "description": "Understand the syllabus/requirements for {topic}", "priority": "HIGH", "estimatedDays": 2 },
-        { "description": "Collect study/reference material for {topic}", "priority": "HIGH", "estimatedDays": 3 },
-        { "description": "Study core topics of {topic}", "priority": "HIGH", "estimatedDays": 14 },
-        { "description": "Practice mock tests/simulations for {topic}", "priority": "MEDIUM", "estimatedDays": 7 },
-        { "description": "Revise weak areas of {topic}", "priority": "LOW", "estimatedDays": 5 }
+        { 
+          "description": "Phase 1: Understand Syllabus & Criteria for {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Analyze official syllabus requirements, question formats, and scoring weights for {topic}", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Take an unassisted diagnostic baseline test to identify initial knowledge blindspots", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 2: Collect Study and Reference Material for {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Curate top-rated textbooks, video courses, question banks, and cheat sheets for {topic}", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Set up structured digital flashcard decks and spaced-repetition study schedule", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 3: Study Core Topics of {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Deep-dive into high-yield theoretical modules using active recall techniques", "priority": "HIGH", "estimatedDays": 8 },
+            { "description": "Complete chapter-end practice problem sets and verify conceptual accuracy", "priority": "HIGH", "estimatedDays": 6 }
+          ]
+        },
+        { 
+          "description": "Phase 4: Practice Mock Tests and Simulations for {topic}", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Take full-length timed mock tests simulating strict test-day constraints", "priority": "HIGH", "estimatedDays": 4 },
+            { "description": "Maintain an Error Log analyzing root causes for every incorrect answer", "priority": "MEDIUM", "estimatedDays": 3 }
+          ]
+        },
+        { 
+          "description": "Phase 5: Revise Weak Areas of {topic}", 
+          "priority": "LOW", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Targeted drill on lowest-scoring subtopics and review master summary formula notes", "priority": "LOW", "estimatedDays": 5 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["improve", "get better at", "enhance"],
+      "keywords": ["improve", "get better at", "enhance", "optimize", "boost"],
       "tasks": [
-        { "description": "Assess current skill level in {topic}", "priority": "HIGH", "estimatedDays": 1 },
-        { "description": "Identify weak areas in {topic}", "priority": "HIGH", "estimatedDays": 2 },
-        { "description": "Practice {topic} consistently", "priority": "MEDIUM", "estimatedDays": 14 },
-        { "description": "Get feedback on {topic} from others", "priority": "MEDIUM", "estimatedDays": 5 },
-        { "description": "Track improvement in {topic} over time", "priority": "LOW", "estimatedDays": 7 }
+        { 
+          "description": "Phase 1: Assess Current Skill Level in {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 1,
+          "subtasks": [
+            { "description": "Audit baseline competencies, current speed/accuracy benchmarks, and existing output in {topic}", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 2: Identify Weak Areas & Bottlenecks in {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Break down previous failures or suboptimal results to isolate root cause friction points", "priority": "HIGH", "estimatedDays": 1 },
+            { "description": "Prioritize high-leverage improvement opportunities that yield the largest performance gains", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 3: Deliberate Practice & Targeted Drills on {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 14,
+          "subtasks": [
+            { "description": "Design high-intensity deliberate practice routines targeting specific weak elements", "priority": "HIGH", "estimatedDays": 7 },
+            { "description": "Implement best-in-class frameworks, shortcuts, and standardized workflows in {topic}", "priority": "HIGH", "estimatedDays": 7 }
+          ]
+        },
+        { 
+          "description": "Phase 4: Get Feedback and Peer Review on {topic}", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Submit work to experienced mentors, coaches, or peer communities for rigorous critique", "priority": "MEDIUM", "estimatedDays": 3 },
+            { "description": "Incorporate critical feedback into an updated execution strategy", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Phase 5: Track Improvement & Sustain Habits in {topic}", 
+          "priority": "LOW", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Benchmark progress metrics against baseline score and establish a long-term maintenance cadence", "priority": "LOW", "estimatedDays": 7 }
+          ]
+        }
       ]
     },
     {
-      "keywords": ["start", "begin"],
+      "keywords": ["start", "begin", "launch", "initiate"],
       "tasks": [
-        { "description": "Research fundamentals of {topic}", "priority": "HIGH", "estimatedDays": 3 },
-        { "description": "Set clear short-term goals for {topic}", "priority": "HIGH", "estimatedDays": 1 },
-        { "description": "Gather resources/tools needed for {topic}", "priority": "MEDIUM", "estimatedDays": 2 },
-        { "description": "Take the first practical step in {topic}", "priority": "MEDIUM", "estimatedDays": 5 },
-        { "description": "Build a consistent routine for {topic}", "priority": "LOW", "estimatedDays": 7 }
+        { 
+          "description": "Phase 1: Research Fundamentals of {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 3,
+          "subtasks": [
+            { "description": "Conduct foundational discovery into core prerequisites, scope, and best practices for {topic}", "priority": "HIGH", "estimatedDays": 2 },
+            { "description": "Evaluate case studies of successful executions and note critical hazards to avoid", "priority": "MEDIUM", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 2: Set Clear Measurable Goals for {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 1,
+          "subtasks": [
+            { "description": "Define SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound) for {topic}", "priority": "HIGH", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 3: Gather Resources and Tools Needed for {topic}", 
+          "priority": "MEDIUM", 
+          "estimatedDays": 2,
+          "subtasks": [
+            { "description": "Procure necessary software, physical equipment, licenses, and learning assets", "priority": "MEDIUM", "estimatedDays": 1 },
+            { "description": "Prepare a distraction-free, dedicated environment and workspace for {topic}", "priority": "LOW", "estimatedDays": 1 }
+          ]
+        },
+        { 
+          "description": "Phase 4: Take the First Practical Milestone in {topic}", 
+          "priority": "HIGH", 
+          "estimatedDays": 5,
+          "subtasks": [
+            { "description": "Execute initial tangible project deliverable or foundational action item", "priority": "HIGH", "estimatedDays": 3 },
+            { "description": "Verify early progress against initial benchmarks and calibrate effort", "priority": "MEDIUM", "estimatedDays": 2 }
+          ]
+        },
+        { 
+          "description": "Phase 5: Build a Consistent Long-Term Routine for {topic}", 
+          "priority": "LOW", 
+          "estimatedDays": 7,
+          "subtasks": [
+            { "description": "Establish automated recurring schedule blocks and accountability check-ins", "priority": "LOW", "estimatedDays": 7 }
+          ]
+        }
       ]
     }
   ],
 
   "defaultTemplate": [
-    { "description": "Research and gather information about {goal}", "priority": "HIGH", "estimatedDays": 3 },
-    { "description": "Set clear, measurable milestones for {goal}", "priority": "HIGH", "estimatedDays": 2 },
-    { "description": "Break {goal} into weekly action items", "priority": "MEDIUM", "estimatedDays": 3 },
-    { "description": "Work consistently towards {goal}", "priority": "MEDIUM", "estimatedDays": 14 },
-    { "description": "Track progress and adjust the plan for {goal}", "priority": "LOW", "estimatedDays": 5 },
-    { "description": "Review and refine the outcome of {goal}", "priority": "LOW", "estimatedDays": 3 }
+    { 
+      "description": "Phase 1: Discovery, Scoping & Baseline Assessment for {goal}", 
+      "priority": "HIGH", 
+      "estimatedDays": 3,
+      "subtasks": [
+        { "description": "Define concrete deliverables, boundary limits, and quantifiable success metrics for {goal}", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Audit prerequisite competencies, existing knowledge gaps, and required resource assets", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Map critical dependency bottlenecks, risk factors, and contingency mitigations", "priority": "MEDIUM", "estimatedDays": 1 }
+      ]
+    },
+    { 
+      "description": "Phase 2: Strategic Roadmap & Milestone Design for {goal}", 
+      "priority": "HIGH", 
+      "estimatedDays": 2,
+      "subtasks": [
+        { "description": "Partition {goal} into sequential delivery milestones with concrete target dates", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Establish tracking rubrics, daily progress logs, and automated notification checkpoints", "priority": "MEDIUM", "estimatedDays": 1 }
+      ]
+    },
+    { 
+      "description": "Phase 3: Foundation Building & Prerequisites for {goal}", 
+      "priority": "HIGH", 
+      "estimatedDays": 4,
+      "subtasks": [
+        { "description": "Study domain standards, core theoretical rules, and primary frameworks governing {goal}", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Set up operating environment, specialized tools, and starter templates for {goal}", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Execute initial exploratory drill to benchmark baseline throughput and identify roadblocks", "priority": "MEDIUM", "estimatedDays": 1 }
+      ]
+    },
+    { 
+      "description": "Phase 4: Intensive Implementation & Core Deliverables for {goal}", 
+      "priority": "MEDIUM", 
+      "estimatedDays": 14,
+      "subtasks": [
+        { "description": "Build primary high-priority deliverables and core solution components for {goal}", "priority": "HIGH", "estimatedDays": 6 },
+        { "description": "Produce working draft/prototype and validate against initial functional specifications", "priority": "HIGH", "estimatedDays": 5 },
+        { "description": "Refactor suboptimal modules, eliminate blockers, and streamline workflow", "priority": "MEDIUM", "estimatedDays": 3 }
+      ]
+    },
+    { 
+      "description": "Phase 5: Evaluation, Quality Audit & Rigorous Refinement for {goal}", 
+      "priority": "MEDIUM", 
+      "estimatedDays": 5,
+      "subtasks": [
+        { "description": "Benchmark completed work against quality criteria and performance baselines", "priority": "HIGH", "estimatedDays": 2 },
+        { "description": "Collect critical third-party reviews, user testing feedback, or mentor critiques on {goal}", "priority": "MEDIUM", "estimatedDays": 2 },
+        { "description": "Perform targeted remediation to patch defects and polish final deliverables", "priority": "LOW", "estimatedDays": 1 }
+      ]
+    },
+    { 
+      "description": "Phase 6: Final Delivery, Retrospective & Sustainability for {goal}", 
+      "priority": "LOW", 
+      "estimatedDays": 3,
+      "subtasks": [
+        { "description": "Finalize, archive documentation, and deliver or launch the completed outcome of {goal}", "priority": "HIGH", "estimatedDays": 1 },
+        { "description": "Conduct a post-implementation retrospective analyzing time accuracy and process efficiency", "priority": "MEDIUM", "estimatedDays": 1 },
+        { "description": "Formulate a long-term maintenance protocol, habit loop, or continuous improvement plan", "priority": "LOW", "estimatedDays": 1 }
+      ]
+    }
   ]
 }

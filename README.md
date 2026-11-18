@@ -43,7 +43,7 @@ Visit: **[http://localhost:8080](http://localhost:8080)**
 | **Frontend** | Vanilla HTML5 + Modern CSS3 + Vanilla JavaScript (ES6+) | ✅ Zero React / Frameworks |
 | **Database** | SQLite JDBC Driver (`goal_decomposition.db`) | ✅ Zero Server Setup / Zero Cost |
 | **Engine** | Deterministic Keyword Rules + Verb Heuristics | ✅ No OpenAI / No Gemini / No ML |
-| **Tests** | JUnit 5 + MockMvc Integration Suite | ✅ 12 Automated Tests Passing |
+| **Tests** | JUnit 5 + MockMvc Integration Suite | ✅ 16 Automated Tests Passing (8 Unit + 8 Integration) |
 
 ---
 
@@ -93,15 +93,18 @@ The engine (`DecompositionService.java`) operates through a 3-tier deterministic
                                       [SQLite Persistence & UI Tree]
 ```
 
-1. **Topic match**: If the goal contains an exact topic keyword (e.g., `web development`), it loads a hand-crafted curriculum with pre-configured nested subprojects.
-2. **Verb template match**: If no topic matched, it looks for action verbs (`learn`, `build`, `prepare`, `improve`, `start`), extracts the remainder as `{topic}`, and dynamically populates structured action steps.
-3. **Fallback default template**: For arbitrary text, it applies a proven 6-phase project execution framework.
-4. **Difficulty scaling**:
+1. **Topic match**: If the goal contains an exact topic keyword (e.g., `web development`, `dsa`, `system design`), it loads an exhaustive curriculum with rich nested subtasks per phase.
+2. **Verb template match**: If no topic matched, it looks for action verbs (`learn`, `build`, `prepare`, `improve`, `start`), extracts the remainder as `{topic}`, and dynamically populates structured action phases with recursive `{topic}` subtask substitution.
+3. **Fallback default template**: For arbitrary text, it applies a comprehensive 6-phase project execution framework with contextual in-depth step synthesis.
+4. **Depth modes**:
+   - `In-Depth Plan` (`depth: "in-depth"`): Decomposes goals into multi-tier trees with concrete, step-by-step actionable subtasks per phase (100% in-depth coverage).
+   - `Standard Roadmap` (`depth: "standard"`): Generates a high-level milestone roadmap omitting nested subtasks.
+5. **Difficulty scaling**:
    - `Easy`: Multiplies estimated days by **0.7x**
    - `Medium`: Standard baseline **1.0x**
-   - `Hard`: Multiplies estimated days by **1.5x** and appends an advanced deep-dive step.
-5. **Dependencies (`dependsOnTaskId`)**: Sibling tasks are chained sequentially (e.g. *Learn CSS* requires *Learn HTML* to be finished first).
-6. **Scoring formula**: 
+   - `Hard`: Multiplies estimated days by **1.5x** and appends an advanced deep-dive phase with dedicated sub-steps.
+6. **Dependencies (`dependsOnTaskId`)**: Sibling tasks are chained sequentially (e.g. *Learn CSS* requires *Learn HTML* to be finished first).
+7. **Scoring formula**: 
    $$\text{Score} = \text{PriorityWeight} (\text{HIGH}=30, \text{MED}=20, \text{LOW}=10) + \max(0, 10 - \text{positionIndex})$$
 
 ---
@@ -112,7 +115,7 @@ All endpoints support both root paths (as specified in evaluation guidelines) an
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `POST` | `/goal` or `/api/goal` | Submit a goal; runs rule decomposition & saves tree |
+| `POST` | `/goal` or `/api/goal` | Submit a goal with optional `difficulty` and `depth`; runs decomposition & saves tree |
 | `GET` | `/tasks/{goalId}` or `/api/tasks/{goalId}` | Fetch decomposed tasks for an existing goal |
 | `GET` | `/goals` or `/api/goals` | List all submitted goals for history sidebar |
 | `PATCH` | `/tasks/{taskId}/toggle` | Invert task completion status (`completed = !completed`) |
@@ -122,7 +125,8 @@ All endpoints support both root paths (as specified in evaluation guidelines) an
 ```json
 {
   "title": "Learn Web Development",
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "depth": "in-depth"
 }
 ```
 
@@ -132,13 +136,16 @@ All endpoints support both root paths (as specified in evaluation guidelines) an
   "goalId": 1,
   "title": "Learn Web Development",
   "difficulty": "medium",
+  "depth": "in-depth",
   "createdAt": "2026-09-17T18:07:00",
   "totalEstimatedDays": 36,
-  "totalTaskCount": 8,
+  "totalTaskCount": 24,
   "completedTaskCount": 0,
+  "totalPhaseCount": 5,
+  "totalSubtaskCount": 19,
   "matchType": "TOPIC",
   "matchedKeyword": "web development",
-  "explanation": "Matched specialized topic curriculum for 'web development'",
+  "explanation": "Matched in-depth specialized curriculum for 'web development' with granular execution sub-steps",
   "tasks": [
     {
       "id": 1,
@@ -148,16 +155,32 @@ All endpoints support both root paths (as specified in evaluation guidelines) an
       "dependsOnTaskId": null,
       "score": 40.0,
       "completed": false,
-      "children": []
-    },
-    {
-      "id": 2,
-      "description": "Learn CSS",
-      "priority": "HIGH",
-      "estimatedDays": 5,
-      "dependsOnTaskId": 1,
-      "score": 39.0,
-      "completed": false,
+      "children": [
+        {
+          "id": 2,
+          "description": "Master document structure, head metadata, and HTML5 semantic tags",
+          "priority": "HIGH",
+          "estimatedDays": 1,
+          "dependsOnTaskId": null,
+          "score": 40.0,
+          "completed": false,
+          "children": []
+        },
+        {
+          "id": 3,
+          "description": "Build accessible forms with client-side validation attributes",
+          "priority": "HIGH",
+          "estimatedDays": 1,
+          "dependsOnTaskId": 2,
+          "score": 39.0,
+          "completed": false,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+```
       "children": []
     },
     {

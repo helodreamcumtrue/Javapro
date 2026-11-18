@@ -108,4 +108,40 @@ class DecompositionServiceTest {
             assertTrue(t.score > 0, "Task score should be positive");
         }
     }
+
+    @Test
+    @DisplayName("In-depth decomposition should generate granular multi-level subtasks for topics, verbs, and defaults")
+    void testInDepthPlanHasSubtasks() {
+        DecompositionService.DecompositionPlan topicPlan = service.decomposePlan("Learn Python", "medium", "in-depth");
+        assertNotNull(topicPlan);
+        assertEquals("in-depth", topicPlan.depth);
+        assertTrue(topicPlan.totalSubtasks > 0, "In-depth topic plan must contain granular subtasks");
+        assertTrue(topicPlan.tasks.stream().allMatch(t -> !t.children.isEmpty()),
+                "Every top-level phase in an in-depth topic plan should have detailed subtasks");
+
+        DecompositionService.DecompositionPlan verbPlan = service.decomposePlan("Build an Autonomous Drone", "medium", "in-depth");
+        assertNotNull(verbPlan);
+        assertTrue(verbPlan.totalSubtasks > 0, "In-depth verb plan must contain granular subtasks");
+        // Verify subtask topic substitution worked
+        boolean subtaskHasDrone = verbPlan.tasks.stream()
+                .flatMap(t -> t.children.stream())
+                .anyMatch(c -> c.description.toLowerCase().contains("drone"));
+        assertTrue(subtaskHasDrone, "Nested subtasks should dynamically inherit and substitute the topic name");
+
+        DecompositionService.DecompositionPlan defaultPlan = service.decomposePlan("Unusual Goal XYZ 123", "medium", "in-depth");
+        assertNotNull(defaultPlan);
+        assertTrue(defaultPlan.totalSubtasks > 0, "Default fallback in-depth plan must contain granular subtasks");
+    }
+
+    @Test
+    @DisplayName("Standard mode should return only high-level phase milestones without nested subtasks")
+    void testStandardModeOmission() {
+        DecompositionService.DecompositionPlan standardPlan = service.decomposePlan("Learn Python", "medium", "standard");
+        assertNotNull(standardPlan);
+        assertEquals("standard", standardPlan.depth);
+        assertEquals(0, standardPlan.totalSubtasks, "Standard mode should omit nested subtasks");
+        for (DecompositionService.TaskBuildResult t : standardPlan.tasks) {
+            assertTrue(t.children.isEmpty(), "Tasks in standard mode should not have children");
+        }
+    }
 }

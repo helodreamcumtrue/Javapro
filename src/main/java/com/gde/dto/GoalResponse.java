@@ -18,6 +18,9 @@ public class GoalResponse {
     private String matchType;
     private String matchedKeyword;
     private String explanation;
+    private String depth = "in-depth";
+    private int totalPhaseCount;
+    private int totalSubtaskCount;
     private List<TaskNode> tasks;
 
     public GoalResponse() {
@@ -28,6 +31,14 @@ public class GoalResponse {
                          int totalTaskCount, int completedTaskCount,
                          String matchType, String matchedKeyword, String explanation,
                          List<TaskNode> tasks) {
+        this(goalId, title, difficulty, createdAt, totalEstimatedDays, totalTaskCount, completedTaskCount, matchType, matchedKeyword, explanation, "in-depth", tasks);
+    }
+
+    public GoalResponse(Long goalId, String title, String difficulty,
+                         LocalDateTime createdAt, int totalEstimatedDays,
+                         int totalTaskCount, int completedTaskCount,
+                         String matchType, String matchedKeyword, String explanation,
+                         String depth, List<TaskNode> tasks) {
         this.goalId = goalId;
         this.title = title;
         this.difficulty = difficulty;
@@ -38,7 +49,12 @@ public class GoalResponse {
         this.matchType = matchType;
         this.matchedKeyword = matchedKeyword;
         this.explanation = explanation;
+        this.depth = depth;
         this.tasks = tasks;
+        if (tasks != null) {
+            this.totalPhaseCount = tasks.size();
+            this.totalSubtaskCount = totalTaskCount - this.totalPhaseCount;
+        }
     }
 
     public Long getGoalId() {
@@ -127,5 +143,29 @@ public class GoalResponse {
 
     public void setTasks(List<TaskNode> tasks) {
         this.tasks = tasks;
+    }
+
+    public String getDepth() {
+        return depth;
+    }
+
+    public void setDepth(String depth) {
+        this.depth = depth;
+    }
+
+    public int getTotalPhaseCount() {
+        return totalPhaseCount;
+    }
+
+    public void setTotalPhaseCount(int totalPhaseCount) {
+        this.totalPhaseCount = totalPhaseCount;
+    }
+
+    public int getTotalSubtaskCount() {
+        return totalSubtaskCount;
+    }
+
+    public void setTotalSubtaskCount(int totalSubtaskCount) {
+        this.totalSubtaskCount = totalSubtaskCount;
     }
 }

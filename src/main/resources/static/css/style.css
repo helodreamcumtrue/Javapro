@@ -920,6 +920,76 @@ body {
   color: var(--text-dim);
 }
 
+/* Depth Picker Styling (In-Depth Plan vs Standard) */
+.depth-picker {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 8px;
+}
+
+.depth-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.depth-option input[type="radio"] {
+  display: none;
+}
+
+.depth-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 12px;
+  background: var(--bg-recessed-dark);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.depth-btn-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.depth-btn-top strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.depth-btn small {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  line-height: 1.2;
+}
+
+.depth-btn:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #12141d;
+}
+
+.depth-btn.active, .depth-option input[type="radio"]:checked + .depth-btn {
+  border-color: var(--lime-primary);
+  background: rgba(195, 250, 59, 0.08);
+  box-shadow: 0 0 16px rgba(195, 250, 59, 0.12);
+}
+
+.depth-btn.active .depth-btn-top strong, .depth-option input[type="radio"]:checked + .depth-btn .depth-btn-top strong {
+  color: var(--lime-primary);
+}
+
+.depth-btn.active .depth-btn-top svg, .depth-option input[type="radio"]:checked + .depth-btn .depth-btn-top svg {
+  color: var(--lime-primary);
+}
+
 /* Difficulty Picker Cards (Matches 3-Box Style) */
 .difficulty-picker {
   display: grid;
@@ -1357,6 +1427,20 @@ body {
   border-radius: var(--radius-full);
 }
 
+.badge-depth {
+  background: rgba(195, 250, 59, 0.14);
+  color: var(--lime-primary);
+  border: 1px solid rgba(195, 250, 59, 0.35);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.badge-depth.standard {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
 .badge-diff {
   background: rgba(195, 250, 59, 0.1);
   color: var(--lime-primary);
@@ -1374,6 +1458,12 @@ body {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
   border: 1px solid var(--border-card);
+}
+
+.badge-breakdown {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--lime-primary);
+  border: 1px solid rgba(195, 250, 59, 0.25);
 }
 
 .plan-actions {

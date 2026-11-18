@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS goals (
     created_at       TIMESTAMP NOT NULL,
     match_type       TEXT,                      -- 'TOPIC' | 'VERB' | 'DEFAULT'
     matched_keyword  TEXT,                      -- keyword that triggered the rule
-    explanation      TEXT                       -- human-readable decomposition reasoning
+    explanation      TEXT,                      -- human-readable decomposition reasoning
+    depth            TEXT DEFAULT 'in-depth'    -- 'standard' | 'in-depth'
 );
 
 CREATE TABLE IF NOT EXISTS tasks (

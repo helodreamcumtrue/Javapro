@@ -129,6 +129,46 @@ class GoalControllerIntegrationTest {
                 .andExpect(jsonPath("$.error", containsString("empty")));
     }
 
+    @Test
+    @DisplayName("POST /goal with depth='in-depth' should return granular multi-tier task children")
+    void testSubmitGoalInDepth() throws Exception {
+        String jsonPayload = """
+                {
+                    "title": "Machine Learning",
+                    "difficulty": "medium",
+                    "depth": "in-depth"
+                }
+                """;
+
+        mockMvc.perform(post("/goal")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonPayload))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.depth", is("in-depth")))
+                .andExpect(jsonPath("$.totalSubtaskCount", greaterThan(0)))
+                .andExpect(jsonPath("$.tasks[0].children", hasSize(greaterThan(0))));
+    }
+
+    @Test
+    @DisplayName("POST /goal with depth='standard' should return high-level phases with empty children")
+    void testSubmitGoalStandard() throws Exception {
+        String jsonPayload = """
+                {
+                    "title": "Learn Python",
+                    "difficulty": "medium",
+                    "depth": "standard"
+                }
+                """;
+
+        mockMvc.perform(post("/goal")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonPayload))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.depth", is("standard")))
+                .andExpect(jsonPath("$.totalSubtaskCount", is(0)))
+                .andExpect(jsonPath("$.tasks[0].children", hasSize(0)));
+    }
+
     private static void assertTrue(boolean condition, String msg) {
         org.junit.jupiter.api.Assertions.assertTrue(condition, msg);
     }

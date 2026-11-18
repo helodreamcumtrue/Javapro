@@ -34,6 +34,9 @@ public class Goal {
     @Column(name = "explanation")
     private String explanation;
 
+    @Column(name = "depth")
+    private String depth = "in-depth";
+
     public Goal() {
     }
 
@@ -41,15 +44,21 @@ public class Goal {
         this.title = title;
         this.difficulty = difficulty;
         this.createdAt = LocalDateTime.now();
+        this.depth = "in-depth";
     }
 
     public Goal(String title, String difficulty, String matchType, String matchedKeyword, String explanation) {
+        this(title, difficulty, matchType, matchedKeyword, explanation, "in-depth");
+    }
+
+    public Goal(String title, String difficulty, String matchType, String matchedKeyword, String explanation, String depth) {
         this.title = title;
         this.difficulty = difficulty;
         this.createdAt = LocalDateTime.now();
         this.matchType = matchType;
         this.matchedKeyword = matchedKeyword;
         this.explanation = explanation;
+        this.depth = (depth == null || depth.isBlank()) ? "in-depth" : depth;
     }
 
     // ----- Getters & Setters -----
@@ -107,5 +116,13 @@ public class Goal {
 
     public void setExplanation(String explanation) {
         this.explanation = explanation;
+    }
+
+    public String getDepth() {
+        return depth;
+    }
+
+    public void setDepth(String depth) {
+        this.depth = depth;
     }
 }

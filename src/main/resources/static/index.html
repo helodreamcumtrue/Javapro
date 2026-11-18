@@ -262,6 +262,43 @@
             </div>
 
             <div class="form-group">
+              <label>Decomposition Depth</label>
+              <div class="depth-picker" id="depthPicker">
+                <label class="depth-option">
+                  <input type="radio" name="depth" value="in-depth" checked />
+                  <span class="depth-btn active">
+                    <span class="depth-btn-top">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
+                      <strong>In-Depth Plan</strong>
+                    </span>
+                    <small>Granular sub-steps &amp; multi-tier roadmap</small>
+                  </span>
+                </label>
+                <label class="depth-option">
+                  <input type="radio" name="depth" value="standard" />
+                  <span class="depth-btn">
+                    <span class="depth-btn-top">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                      </svg>
+                      <strong>Standard</strong>
+                    </span>
+                    <small>High-level phase milestones</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label>Difficulty / Scope Level</label>
               <div class="difficulty-picker" id="difficultyPicker">
                 <label class="diff-option">
@@ -301,13 +338,15 @@
             <span class="presets-title">Quick Demos &amp; Topic Presets:</span>
             <div class="chips-grid">
               <button type="button" class="preset-chip featured" data-goal="AI Study Planner" data-diff="medium">AI Study Planner</button>
-              <button type="button" class="preset-chip" data-goal="Learn Web Development" data-diff="medium">Learn Web Development</button>
-              <button type="button" class="preset-chip" data-goal="Build a Mobile App" data-diff="hard">Build a Mobile App</button>
+              <button type="button" class="preset-chip" data-goal="Learn Web Development" data-diff="medium">Web Development</button>
+              <button type="button" class="preset-chip" data-goal="DSA and LeetCode" data-diff="hard">DSA &amp; Algorithms</button>
+              <button type="button" class="preset-chip" data-goal="System Design" data-diff="hard">System Design</button>
+              <button type="button" class="preset-chip" data-goal="Machine Learning" data-diff="hard">Machine Learning</button>
+              <button type="button" class="preset-chip" data-goal="Build a Mobile App" data-diff="medium">Build Mobile App</button>
               <button type="button" class="preset-chip" data-goal="Learn Python" data-diff="medium">Learn Python</button>
-              <button type="button" class="preset-chip" data-goal="Prepare for Exam" data-diff="medium">Prepare for Exam</button>
-              <button type="button" class="preset-chip" data-goal="Start a Startup" data-diff="hard">Start a Startup</button>
-              <button type="button" class="preset-chip" data-goal="Learn Guitar" data-diff="easy">Learn Guitar</button>
               <button type="button" class="preset-chip" data-goal="Build an Autonomous Drone" data-diff="medium">Autonomous Drone</button>
+              <button type="button" class="preset-chip" data-goal="Start a Startup" data-diff="hard">Start a Startup</button>
+              <button type="button" class="preset-chip" data-goal="Prepare for Exam" data-diff="medium">Prepare for Exam</button>
             </div>
           </div>
         </div>
@@ -411,9 +450,11 @@
               <span class="plan-kicker">GENERATED EXECUTION ROADMAP</span>
               <h2 id="resultTitle" class="plan-title">Plan Name</h2>
               <div class="plan-badges">
+                <span id="resultDepth" class="badge badge-depth">In-Depth Plan</span>
                 <span id="resultDifficulty" class="badge badge-diff">Medium</span>
                 <span id="resultTimeline" class="badge badge-timeline">~36 days</span>
                 <span id="resultTaskStats" class="badge badge-stats">8 tasks</span>
+                <span id="resultBreakdown" class="badge badge-breakdown">5 phases • 15 sub-steps</span>
               </div>
             </div>
             <div class="plan-actions">
@@ -449,6 +490,10 @@
               <div class="inspector-row">
                 <span class="ins-label">Match Strategy:</span>
                 <span id="ruleExplanation" class="ins-val">Direct topic rule matched: Web Development</span>
+              </div>
+              <div class="inspector-row">
+                <span class="ins-label">Decomposition Depth:</span>
+                <span id="ruleDepth" class="ins-val text-lime">IN-DEPTH (Granular Subtasks Active)</span>
               </div>
               <div class="inspector-row">
                 <span class="ins-label">Matched Keyword:</span>
